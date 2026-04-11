@@ -47,16 +47,33 @@ export default function NewsEventsPage() {
             {events.map((event) => (
               <article key={event.id} className="text-center">
                 <div className="relative w-full aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={event.image || event.images?.[0] || "/placeholder.svg"}
-                    alt={event.title}
-                    fill
-                    sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute left-0 top-0 bg-[#0b4b73] text-white text-xs font-semibold px-2 py-1">
-                    {event.date.month} {event.date.day}
-                  </div>
+                  {(() => {
+                    const imageSrc = event.image || event.images?.[0];
+                    return (
+                      <>
+                        {event.images?.length ? (
+                          <Image
+                            src={imageSrc as string}
+                            alt={event.title}
+                            fill
+                            sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"
+                            className="object-cover text-center flex items-center justify-center"
+                          />
+                        ) : (
+                          <Image
+                            src={imageSrc as string}
+                            alt={event.title}
+                            fill
+                            sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"
+                            className="object-cover text-center flex items-center justify-center pt-10"
+                          />
+                        )}
+                        <div className="absolute left-0 top-0 bg-[#0b4b73] text-white text-xs font-semibold px-2 py-1">
+                          {event.date.month} {event.date.day}
+                        </div>
+                      </>
+                    );
+                  })()}
                 </div>
 
                 <h3 className="mt-3 text-sm font-bold text-[#094d82] uppercase">
@@ -99,7 +116,7 @@ export default function NewsEventsPage() {
           )}
         </div> */}
       </section>
-<ContactHero />
+      <ContactHero />
       <Footer />
     </main>
   );

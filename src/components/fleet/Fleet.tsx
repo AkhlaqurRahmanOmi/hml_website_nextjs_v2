@@ -79,7 +79,7 @@ export const FleetPage = () => {
                     
 
                     {/* Name + Download */}
-                    <div className="flex flex-col items-start -mt-0 xl:-mt-[394px]">
+                    <div className="flex flex-col items-start -mt-0 xl:-mt-[380px] 2xl:-mt-[350px]">
                       <h2 className="text-4xl lg:text-5xl text-nowrap font-bold text-[#094d82] uppercase mb-2 md:mb-6">
                         {fleetData.name}
                       </h2>

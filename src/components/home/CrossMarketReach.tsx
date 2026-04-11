@@ -52,10 +52,17 @@ export const HomeCrossMarketReachSection = () => {
                             {/* Overlay Content */}
                             <div className="absolute inset-0 z-10 flex flex-col justify-center bg-black/20" >
                                 <h2
-                                    className="font-roboto text-4xl lg:text-7xl font-bold text-white block text-start uppercase mb-2 2xl:mb-6 px-6 md:h-16"
+                                    className={`font-roboto text-2xl lg:text-5xl font-bold text-white block text-start uppercase mb-2 2xl:mb-6 px-6 md:h-16 ${isHovered ? "" : "whitespace-nowrap"}`}
                                     style={{
                                         textShadow:
                                             "2px 2px 2px rgba(0, 0, 0, 1), 4px 4px 8px rgba(0, 0, 0, 0.85)",
+                                        position: isHovered ? "static" : "absolute",
+                                        left: isHovered ? "auto" : "50%",
+                                        top: isHovered ? "auto" : "50%",
+                                        transform: isHovered
+                                            ? "none"
+                                            : "translate(-50%, -50%) rotate(-90deg)",
+                                        transformOrigin: "center",
                                     }}
                                 >
                                     {item.title}
