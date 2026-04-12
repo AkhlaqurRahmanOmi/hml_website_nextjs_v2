@@ -24,9 +24,9 @@ export default function contactpage() {
                 </section>
             </div> */}
             <FullPageWrapper>
-                <div className="section">
+                {/* <div className="section">
                     <ContactHero />
-                </div>
+                </div> */}
                 <div className="section">
                     <ContactMap />
                 </div>
