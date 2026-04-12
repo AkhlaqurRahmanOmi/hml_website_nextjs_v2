@@ -33,9 +33,9 @@ export const HomeFleetOverview = () => {
       <div className="relative h-full w-full overflow-hidden">
         {/* Full-bleed background video */}
         <HeroVideoWithFallback
-          mp4Url="https://res.cloudinary.com/druseaf0p/video/upload/q_auto/f_auto/v1775795290/fleet_background_video_xrhzqb.mp4"
-          webmUrl="https://res.cloudinary.com/druseaf0p/video/upload/q_auto/f_auto/v1775795290/fleet_background_video_xrhzqb.mp4"
-          posterImage="https://res.cloudinary.com/dkxoyiqfj/video/upload/so_1,c_fill,w_1280,h_720/Fleet_Video2_alxqmb.jpg"
+          mp4Url="https://res.cloudinary.com/druseaf0p/video/upload/q_auto/f_auto/v1776007388/HML_video_website_gef0ny.mp4"
+          webmUrl="https://res.cloudinary.com/druseaf0p/video/upload/q_auto/f_auto/v1776007388/HML_video_website_gef0ny.mp4"
+          // posterImage="https://res.cloudinary.com/dkxoyiqfj/video/upload/so_1,c_fill,w_1280,h_720/Fleet_Video2_alxqmb.jpg"
           className="-z-10"
           overlayClassName="bg-black/20"
         />

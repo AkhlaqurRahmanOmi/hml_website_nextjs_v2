@@ -96,7 +96,7 @@ export const CompnayHistory = () => {
     // </section>
 
     return (
-        <section className="relative min-h-screen flex flex-col justify-center bg-gradient-to-b from-white via-[#85bef3] to-[#4e697e]">
+        <section className="relative min-h-screen bg-gradient-to-b from-white via-[#85bef3] to-[#4e697e]">
             {/* <section className="relative min-h-screen flex flex-col justify-center bg-gradient-to-b from-white via-[#85bef3] to-[#4e697e]"> */}
             {/* <section className="relative min-h-screen flex flex-col justify-center bg-no-repeat bg-cover bg-center 
     before:content-[''] before:absolute before:inset-0 before:bg-black/5 before:backdrop-blur-sm before:z-0 
@@ -104,25 +104,26 @@ export const CompnayHistory = () => {
             {/* <section className="relative min-h-[92vh] flex flex-col justify-center bg-no-repeat bg-cover bg-center 
     before:content-[''] before:absolute before:inset-0 before:bg-black/5 before:backdrop-blur-sm before:z-0 
     bg-[url('/test.jpg')]"> */}
-            <div className="relative flex flex-col justify-center z-10 h-full px-4 md:px-[5%] 2xl:px-[10%] mt-32 lg:mt-40 mb-10">
-                <div data-aos="fade-down" className="text-black/70">
-                    <h2 className="text-2xl md:text-4xl font-medium uppercase">
-                        COMPANY
-                    </h2>
-                    <h1 className="text-4xl md:text-6xl font-semibold uppercase ">
-                        HISTORY
-                    </h1>
-                    {/* <h2 className="text-2xl md:text-4xl font-medium uppercase bg-gradient-to-b from-white to-gray-200 bg-clip-text text-transparent">
-                        COMPANY
-                    </h2>
-                    <h1 className="text-4xl md:text-6xl font-semibold uppercase bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent">
-                        HISTORY
-                    </h1> */}
-                </div>
-
-                <div className="flex flex-col md:flex-row gap-4" data-aos="fade-down" data-aos-delay="200">
-                    <p className="max-w-sm  font-medium text-black/85">HML remains committed to pursuing new challenges in its journey to become a global leader in logistics</p>
-                    <div className="h-[45vh] sm:h-[50vh] lg:h-[55vh] md:w-4/5 overflow-y-auto pl-5 pt-2 custom-scrollbar scroll-fix">
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-24 md:pt-28 lg:pt-32 pb-10">
+                <div className="flex flex-col lg:flex-row gap-6 lg:gap-10" data-aos="fade-down" data-aos-delay="200">
+                    <div className="text-black/70 lg:sticky lg:top-28 lg:self-start lg:max-w-xl">
+                        <h2 className="text-2xl md:text-4xl font-medium uppercase">
+                            COMPANY
+                        </h2>
+                        <h1 className="text-4xl md:text-6xl font-semibold uppercase ">
+                            HISTORY
+                        </h1>
+                        {/* <h2 className="text-2xl md:text-4xl font-medium uppercase bg-gradient-to-b from-white to-gray-200 bg-clip-text text-transparent">
+                            COMPANY
+                        </h2>
+                        <h1 className="text-4xl md:text-6xl font-semibold uppercase bg-gradient-to-b from-white to-gray-300 bg-clip-text text-transparent">
+                            HISTORY
+                        </h1> */}
+                        <p className="mt-4 font-medium text-black/85">
+                            HML remains committed to pursuing new challenges in its journey to become a global leader in logistics
+                        </p>
+                    </div>
+                    <div className="w-full lg:w-3/5 pl-5 pt-2">
 
                         <ol className="relative pb-10">
                             <span className="pointer-events-none absolute left-0 top-0 bottom-[14px] w-px bg-[#094d82]" />
@@ -133,7 +134,7 @@ export const CompnayHistory = () => {
                                     <h3 className="mb-1 text-lg font-semibold text-black/90 ">{item.year}</h3>
 
                                     {item.events.map((evt, idx) => (
-                                        <p key={idx} className="text-base font-semibold text-black/90">
+                                        <p key={idx} className="text-sm sm:text-base font-semibold text-black/90">
                                             <span className="text-transparent bg-gradient-to-b from-white via-white/90 to-white/50 bg-clip-text drop-shadow-[0_2px_6px_rgba(255,255,255,0.3)] font-extrabold mr-4">{evt.month}</span>{evt.text}
                                         </p>
                                     ))}

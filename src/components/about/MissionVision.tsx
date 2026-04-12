@@ -16,18 +16,18 @@ const fadeUp: any = {
 
 const MissionVision = () => {
   return (
-    <section className="relative h-screen bg-[#f4f7fc] bg-[url('/MVBG.jpg')] bg-no-repeat bg-cover bg-center flex flex-col justify-center items-center px-4 py-6 md:py-8">
-      <div className="w-full max-w-7xl mx-auto flex flex-col gap-6">
+    <section className="relative min-h-screen bg-[#f4f7fc] bg-[url('/MVBG.jpg')] bg-no-repeat bg-cover bg-center px-4 py-16 md:py-20">
+      <div className="w-full max-w-7xl mx-auto flex flex-col gap-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           custom={0.1}
           variants={fadeUp}
-          className="rounded-2xl bg-white/90 p-4 shadow-lg backdrop-blur-sm md:p-6"
+          className="rounded-2xl bg-white/90 p-5 shadow-lg backdrop-blur-sm md:p-7"
         >
-          <div className="grid grid-cols-1 items-center gap-6 sm:grid-cols-[0.7fr_1.3fr]">
-            <div className="relative mx-auto aspect-[4/5] w-full max-w-[180px] overflow-hidden rounded-xl shadow-md sm:mx-0 sm:max-w-[200px]">
+          <div className="grid grid-cols-1 items-center gap-6 sm:grid-cols-[0.9fr_1.1fr] lg:grid-cols-[0.7fr_1.3fr]">
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-[200px] overflow-hidden rounded-xl shadow-md sm:mx-0 sm:max-w-[220px]">
               <Image
                 src="/about/CEO_Hi-Megaline.png"
                 alt="Kwang Bae Park, CEO of HI-MEGALINE"
@@ -38,14 +38,14 @@ const MissionVision = () => {
               />
             </div>
 
-            <div className="text-center sm:text-left">
-              <p className="text-md font-semibold uppercase tracking-[0.3em] text-[#4870a0]">
+            <div className="text-center sm:text-left font-helveticaneue">
+              <p className="text-sm font-semibold uppercase text-[#4870a0] md:text-base">
                 CEO Message
               </p>
-              <h2 className="mt-2 font-dmsans text-xl font-bold text-[#0a1f44] md:text-2xl">
+              <h2 className="mt-2 font-dmsans text-xl font-bold text-[#0a1f44] md:text-2xl lg:text-3xl">
                 Your Dedicated Partner, Safely Connecting Customer Value.
               </h2>
-              <div className="mt-3 space-y-3 text-xs text-[#0a1f44] md:text-sm">
+              <div className="mt-3 space-y-2 text-xs text-[#0a1f44] md:text-sm lg:text-base leading-snug">
                 <p>Greetings,</p>
                 <p>I am Kwang Bae Park, CEO of HI-MEGALINE.</p>
                 <p>
@@ -70,7 +70,7 @@ const MissionVision = () => {
 
         <div className="grid grid-cols-1 gap-6 text-center md:grid-cols-2">
           <motion.div
-            className="flex flex-col items-center space-y-4 rounded-2xl bg-white/90 p-4 shadow-lg backdrop-blur-sm md:p-6"
+            className="flex flex-col items-center space-y-4 rounded-2xl bg-white/90 p-5 shadow-lg backdrop-blur-sm md:p-7 font-helveticaneue"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.4 }}
@@ -98,7 +98,7 @@ const MissionVision = () => {
             <motion.p
               variants={fadeUp}
               custom={0.7}
-              className="text-xs sm:text-sm md:text-base text-[#0a1f44] font-dmsans px-2 sm:px-3 leading-tight"
+              className="text-xs sm:text-sm md:text-base text-[#0a1f44] px-2 sm:px-3 leading-snug"
             >
               To deliver safe, reliable, and project-driven heavy marine transportation and
               engineering solutions that meet the unique needs of our global clients.
@@ -106,7 +106,7 @@ const MissionVision = () => {
           </motion.div>
 
           <motion.div
-            className="flex flex-col items-center space-y-4 rounded-2xl bg-white/90 p-4 shadow-lg backdrop-blur-sm md:p-6"
+            className="flex flex-col items-center space-y-4 rounded-2xl bg-white/90 p-5 shadow-lg backdrop-blur-sm md:p-7 font-helveticaneue"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.4 }}
@@ -134,7 +134,7 @@ const MissionVision = () => {
             <motion.p
               variants={fadeUp}
               custom={0.8}
-              className="text-xs sm:text-sm md:text-base text-[#0a1f44] font-dmsans px-2 sm:px-3 leading-tight"
+              className="text-xs sm:text-sm md:text-base text-[#0a1f44] px-2 sm:px-3 leading-snug"
             >
               {`To be the world's most trusted and innovative partner in heavy marine logistics,
               setting standards in performance, service, and engineering excellence.`}

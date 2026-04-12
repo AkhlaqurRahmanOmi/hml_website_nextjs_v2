@@ -28,7 +28,7 @@ export function Footer() {
                 {/* Company Logo */}
                 <div className="flex space-x-4">
                     <div>
-                        <Link href="#" className="flex items-center py-3 px-2 text-gray-700 hover:text-gray-900">
+                        <Link href="#" className="flex items-center py-1 px-2 text-gray-700 hover:text-gray-900">
                             <Image src={HML_LOGO} alt="HML LOGO" width={200} height={100} className="w-full h-16" />
                         </Link>
                     </div>
