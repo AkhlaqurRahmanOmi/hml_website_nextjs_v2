@@ -16,7 +16,6 @@ export default function Home() {
       <div className="section">
         <HomeFleetOverview />
       </div>
-      {/* this is a test */}
       <div className="section">
         <HomeCrossMarketReachSection />
       </div>
