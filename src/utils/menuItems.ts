@@ -1,13 +1,5 @@
 export const navLinks = [
     {
-        name: "Home",
-        link: "/",
-    },
-    {
-        name: "ABOUT US",
-        link: "/about",
-    },
-    {
         name: "FLEET",
         link: "/fleet",
     },
@@ -18,10 +10,6 @@ export const navLinks = [
     {
         name: "ENGINEERING",
         link: "/engineering",
-    },
-    {
-        name: "MEDIA",
-        link: "/news-events",
     },
     {
         name: "CONTACT US",

@@ -8,7 +8,7 @@ export const EngineeringHero = () => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     return (
-        <div className="relative w-full">
+        <div className="relative w-full pt-16 md:pt-20">
             <div className="relative w-full">
                 {/* Animated Fade-in for Image */}
                 <AnimatePresence>
@@ -16,7 +16,7 @@ export const EngineeringHero = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: isLoaded ? 1 : 0 }}
                         transition={{ duration: 1 }}
-                        className="w-full h-[100vh] "
+                        className="w-full h-[60vh]"
                     >
                         <Image
                             alt="In House Engineering"
@@ -24,7 +24,7 @@ export const EngineeringHero = () => {
                             fill
                             loading="eager"
                             onLoad={() => setIsLoaded(true)}
-                            className="object-cover rounded-none"
+                            className="object-cover object-top rounded-none"
                             priority
                         />
                     </motion.div>

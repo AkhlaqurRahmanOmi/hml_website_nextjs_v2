@@ -69,6 +69,12 @@ export default {
   			],
   			nightWindSent: [
   				'var(--font-nightWindSent)'
+  			],
+  			helveticaneue: [
+  				'"Helvetica Neue"',
+  				'Helvetica',
+  				'Arial',
+  				'sans-serif'
   			]
   		},
   		borderRadius: {

@@ -22,9 +22,6 @@ export default function Home() {
       <div className="section">
         <HomeProjectOverview />
       </div>
-      {/* <div className="section">
-        <HomeProjectOverview />
-      </div> */}
       <div className="section">
         <NextProject />
       </div>

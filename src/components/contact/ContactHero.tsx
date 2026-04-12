@@ -1,205 +1,203 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { FaLinkedinIn, FaYoutube, FaDownload, FaPlay } from "react-icons/fa6";
+import { FaDownload, FaPlay } from "react-icons/fa6";
 import BrochureThumbnail from "@/assets/Contact/BrochureProfileImage.webp";
 import BackgroundImage from "@/assets/Contact/HeroImage.webp";
 import YouTubeThumbnail from "@/assets/Contact/YoutubeVideoThumbnail.webp";
 
 export const ContactHero = () => {
-    const [activeMedia, setActiveMedia] = useState<"video" | "image">("video");
-    const [showIframe, setShowIframe] = useState<boolean>(true);
+  const [activeMedia, setActiveMedia] = useState<"video" | "image">("video");
+  const [showIframe, setShowIframe] = useState<boolean>(true);
 
-    const sectionRef = useRef(null);
-    const isInView = useInView(sectionRef, { once: false, margin: "-100px" });
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: false, margin: "-100px" });
 
-    const handleVideoClick = () => {
-        if (activeMedia !== "video") {
-            setActiveMedia("video");
-            setShowIframe(false);
-            setTimeout(() => setShowIframe(true), 700);
-        }
-    };
+  const handleVideoClick = () => {
+    if (activeMedia !== "video") {
+      setActiveMedia("video");
+      setShowIframe(false);
+      setTimeout(() => setShowIframe(true), 700);
+    }
+  };
 
-    return (
-        <section
-            ref={sectionRef}
-            className="relative min-h-screen flex items-center justify-center overflow-hidden"
+  const videoLinks = [
+    "https://youtu.be/XvJzr7KGHGE?si=hPt-P-KnlSR5tGtf",
+    "https://youtu.be/5_nIWxfYQFs?si=tEMxUCC-bsFBHmjG",
+    "https://youtu.be/VJfGfXICVGU?si=rYdYgfZRQKs-Vn4H",
+    "https://youtu.be/fzpXsJbiZnE?si=hn0PSlmEnkHbA6q2",
+    "https://youtu.be/npUCdVeALwM?si=5I647Mz0uRNK-riM",
+    "https://youtu.be/E2L_AYqTRyw?si=Fngs64ot7NKEBkAm",
+    "https://youtu.be/bPI7AO1OO6I?si=NtphxcNpPTczMy3z",
+  ];
+
+  const getYouTubeId = (url: string) => {
+    const match = url.match(/youtu\.be\/([A-Za-z0-9_-]+)/);
+    return match ? match[1] : "";
+  };
+
+  const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Background */}
+      <Image
+        src={BackgroundImage}
+        alt="Ship Blueprint"
+        fill
+        className="object-cover z-0"
+        // priority
+        loading="lazy"
+      />
+
+      <div className="relative z-10 flex flex-col items-start justify-between w-full px-4 md:px-10 lg:px-16 py-24 gap-6">
+        <motion.div
+          className="w-full font-opensans"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
         >
-            {/* Background */}
-            <Image
-                src={BackgroundImage}
-                alt="Ship Blueprint"
-                fill
-                className="object-cover z-0"
-                // priority
-                loading="lazy"
-            />
+          <h1 className="mb-2 mt-2 xl:mt-10">
+            <span className="text-2xl md:text-4xl lg:text-6xl font-semibold text-[#094d82] leading-tight text-nowrap">
+              DISCOVER MORE <span className=" font-extrabold">ABOUT US</span>
+            </span>
+          </h1>
+        </motion.div>
 
-            <div className="relative z-10 flex flex-col lg:flex-row items-start justify-between w-full px-4 md:px-10 lg:px-16 py-24 gap-4 md:gap-6">
-                {/* Left Content */}
-                <motion.div
-                    className="w-full lg:w-1/2 font-opensans"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8 }}
+        <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-6 items-start border-b border-[#094d82]/30 pb-6">
+          {/* Video Section */}
+          <motion.div
+            layout
+            className="relative w-full aspect-video overflow-hidden shadow-lg cursor-pointer transition-all duration-700"
+            onClick={handleVideoClick}
+          >
+                <AnimatePresence mode="wait">
+                  {activeMedia === "video" && showIframe && activeVideoId ? (
+                    <motion.iframe
+                      key="video"
+                      className="w-full h-full"
+                      src={`https://www.youtube.com/embed/${activeVideoId}`}
+                      title="YouTube video player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                    />
+                  ) : (
+                    <motion.div
+                      key="thumbnail"
+                      className="w-full h-full relative"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <Image
+                        src={YouTubeThumbnail}
+                        alt="YouTube Thumbnail"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                        <FaPlay className="text-white text-3xl" />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+          </motion.div>
+
+          {/* Brochure Section */}
+          <motion.div
+            layout
+            className="relative w-full aspect-video shadow-lg overflow-hidden transition-all duration-700 cursor-pointer"
+            onClick={() => setActiveMedia("image")}
+          >
+                <Image
+                  src={BrochureThumbnail}
+                  alt="Brochure Thumbnail"
+                  fill
+                  className="object-cover"
+                />
+
+                <AnimatePresence>
+                  {activeMedia === "image" && (
+                    <motion.div
+                      key="brochure"
+                      className="absolute inset-0 flex items-center justify-center bg-black/40"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <a
+                        href="/HML Brochure.pdf"
+                        target="_blank"
+                        download
+                        className="bg-white text-[#094d82] px-4 py-2 flex items-center gap-2 font-bold shadow-lg"
+                      >
+                        <FaDownload />
+                        Download Brochure
+                      </a>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+          </motion.div>
+        </div>
+
+        <div className="mt-2 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
+            {videoLinks.map((url) => {
+              const id = getYouTubeId(url);
+              const thumb = id
+                ? `https://img.youtube.com/vi/${id}/hqdefault.jpg`
+                : "";
+              const isActive = id === activeVideoId;
+              return (
+                <button
+                  key={url}
+                  type="button"
+                  onClick={() => {
+                    setActiveVideoId(id);
+                  }}
+                  className={`group relative aspect-video overflow-hidden shadow-lg transition-colors ${isActive ? "ring-2 ring-[#0b4b73]" : ""}`}
                 >
-                    <h1 className="mb-1 md:mb-4 flex flex-col">
-                        <span className="text-2xl md:text-4xl lg:text-6xl font-semibold text-[#094d82] leading-tight">
-                            DISCOVER MORE <br />
-                            <span className="text-5xl md:text-7xl font-extrabold">ABOUT US</span>
-                        </span>
-                    </h1>
-                    <p className="text-[#094d82] text-sm md:text-base max-w-xl text-justify mt-4 leading-relaxed">
-                        HML has also developed its own in-house engineering by bringing together engineering expertise from various industries and investing in leading engineering software, which gives us the ability to provide engineering solutions to our clients and project-specific requirements.
-                    </p>
-
-                    <motion.div
-                        className="flex md:flex-col mt-6 md:space-y-4 gap-2 md:gap-0"
-                        initial="hidden"
-                        animate={isInView ? "visible" : "hidden"}
-                        variants={{
-                            visible: {
-                                transition: {
-                                    staggerChildren: 0.2,
-                                },
-                            },
-                        }}
-                    >
-                        {[
-                            {
-                                href: "https://www.linkedin.com/company/hml-korea/",
-                                icon: (
-                                    <FaLinkedinIn className="size-10 fill-white bg-[#0077B5] p-2 rounded-md" />
-                                ),
-                                label: "LINKEDIN",
-                                sub: "FOLLOW US ON",
-                            },
-                            {
-                                href: "https://www.youtube.com/@HML-Korea",
-                                icon: (
-                                    <FaYoutube className="size-10 fill-white bg-red-600 p-2 rounded-md" />
-                                ),
-                                label: "YOUTUBE",
-                                sub: "SUBSCRIBE US ON",
-                            },
-                        ].map((link, i) => (
-                            <motion.div
-                                key={i}
-                                variants={{
-                                    hidden: { opacity: 0, y: 20 },
-                                    visible: { opacity: 1, y: 0 },
-                                }}
-                            >
-                                <Link
-                                    className="flex bg-[#094d82] text-white gap-4 w-full max-w-[240px] p-2 rounded-lg items-center"
-                                    href={link.href}
-                                    target="_blank"
-                                >
-                                    {link.icon}
-                                    <div className="flex flex-col">
-                                        <span className="text-sm">{link.sub}</span>
-                                        <span className="font-bold">{link.label}</span>
-                                    </div>
-                                </Link>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </motion.div>
-
-                {/* Right Content */}
-                <div className="w-full lg:w-1/2 flex flex-col md:flex-row md:items-end justify-center gap-4">
-                    {/* Video Section */}
-                    <motion.div
-                        layout
-                        className={`relative rounded-md overflow-hidden shadow-lg cursor-pointer transition-all duration-700
-                            ${activeMedia === "video"
-                                ? "w-full max-w-[560px] aspect-video"
-                                : "w-[140px] h-[90px] md:w-[120px] md:h-[80px]"
-                            }`}
-                        onClick={handleVideoClick}
-                    >
-                        <AnimatePresence mode="wait">
-                            {activeMedia === "video" && showIframe ? (
-                                <motion.iframe
-                                    key="video"
-                                    className="w-full h-full"
-                                    src="https://www.youtube.com/embed/5_nIWxfYQFs?si=2l_4US9t6Sf69VfU"
-                                    title="YouTube video player"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowFullScreen
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.5 }}
-                                />
-                            ) : (
-                                <motion.div
-                                    key="thumbnail"
-                                    className="w-full h-full relative"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.5 }}
-                                >
-                                    <Image
-                                        src={YouTubeThumbnail}
-                                        alt="YouTube Thumbnail"
-                                        fill
-                                        className="object-cover"
-                                    />
-                                    <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                                        <FaPlay className="text-white text-3xl" />
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </motion.div>
-
-                    {/* Brochure Section */}
-                    <motion.div
-                        layout
-                        className={`relative rounded-md shadow-lg overflow-hidden transition-all duration-700 cursor-pointer
-                            ${activeMedia === "image"
-                                ? "w-full max-w-[560px] aspect-video"
-                                : "w-[120px] h-[160px]"
-                            }`}
-                        onClick={() => setActiveMedia("image")}
-                    >
-                        <Image
-                            src={BrochureThumbnail}
-                            alt="Brochure Thumbnail"
-                            fill
-                            className="object-cover"
-                        />
-
-                        <AnimatePresence>
-                            {activeMedia === "image" && (
-                                <motion.div
-                                    key="brochure"
-                                    className="absolute inset-0 flex items-center justify-center bg-black/40"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                >
-                                    <a
-                                        href="/HML Brochure.pdf"
-                                        target="_blank"
-                                        download
-                                        className="bg-white text-[#094d82] px-4 py-2 rounded-md flex items-center gap-2 font-bold shadow-lg"
-                                    >
-                                        <FaDownload />
-                                        Download Brochure
-                                    </a>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </motion.div>
-                </div>
-            </div>
-        </section>
-    );
+                  {activeVideoId === id ? (
+                    <iframe
+                      className="h-full w-full"
+                      src={`https://www.youtube.com/embed/${id}?autoplay=1&rel=0`}
+                      title="YouTube video player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  ) : thumb ? (
+                    <>
+                      <Image
+                        src={thumb}
+                        alt="YouTube video thumbnail"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/35 transition-colors group-hover:bg-black/45">
+                        <FaPlay className="text-white text-3xl" />
+                      </div>
+                    </>
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-gray-200 text-xs font-semibold text-[#6b7d90]">
+                      Video
+                    </div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
