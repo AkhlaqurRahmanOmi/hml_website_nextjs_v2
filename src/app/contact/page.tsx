@@ -1,5 +1,4 @@
 import { ContactMap } from "@/components/contact/ContactMap";
-import FullPageWrapper from "@/utils/FullPageWrapper";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
