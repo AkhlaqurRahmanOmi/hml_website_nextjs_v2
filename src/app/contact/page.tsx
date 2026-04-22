@@ -8,10 +8,8 @@ export const metadata: Metadata = {
 
 export default function contactpage() {
     return (
-        <FullPageWrapper>
-            <div className="section">
-                <ContactMap />
-            </div>
-        </FullPageWrapper>
-    );
+        <main className="pt-16 md:pt-20">
+            <ContactMap />
+        </main>
+    )
 }
