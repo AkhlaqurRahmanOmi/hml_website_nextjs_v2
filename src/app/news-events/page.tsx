@@ -48,9 +48,9 @@ export default function NewsEventsPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <section className="mx-auto w-[95%] px-4 sm:px-6 lg:px-8 py-10 pt-24 sm:pt-28 lg:pt-32 lg:pb-12 font-helveticaneue">
+      <section className="mx-auto w-[95%] min-h-screen px-4 sm:px-6 lg:px-8 py-10 pt-24 sm:pt-28 lg:pt-32 lg:pb-12 font-helveticaneue">
         <div className="flex items-start justify-between">
-          <h1 className="text-3xl sm:text-4xl font-black tracking-wide text-[#094d82] uppercase">
+          <h1 className="text-3xl sm:text-4xl font-black tracking-wide text-[#094d82] uppercase mt-[3%]">
             LATEST NEWS
           </h1>
 

@@ -15,7 +15,7 @@ export const AboutHero = () => {
         className="object-cover"
       />
       <div className="absolute inset-0 bg-white/60" />
-      <div className="relative mx-auto flex min-h-[60vh] w-[90%] flex-col items-center justify-center gap-6 px-4 py-16 md:px-10 text-center">
+      <div className="relative mx-auto flex min-h-[60vh] w-[90%] flex-col items-center justify-center gap-6 px-4 mt-[3%] md:px-10 text-center">
         <div className="w-full text-left">
           <motion.h1
             initial={{ opacity: 0, y: 14 }}
