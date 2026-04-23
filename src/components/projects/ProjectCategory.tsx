@@ -63,7 +63,7 @@ export default function ProjectCategory({
       root?.removeEventListener("mouseleave", start);
       document.removeEventListener("visibilitychange", onVisibility);
     };
-  }, [api, autoPlayDelay, projects?.length]);
+  }, [api, autoPlayDelay, projects]);
 
   return (
     <div className="h-full w-full flex flex-col">

@@ -162,7 +162,7 @@ export const HomeProjectOverview = () => {
     if (!target) return;
 
     alignCardToStart(target);
-  }, [alignCardToStart, availableYearsAsc, findNearestExistingYear, yearToFirstIndex]);
+  }, [alignCardToStart, findNearestExistingYear, yearToFirstIndex]);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -170,7 +170,7 @@ export const HomeProjectOverview = () => {
     el.addEventListener("scroll", updateScrollButtons, { passive: true });
     updateScrollButtons();
     return () => el.removeEventListener("scroll", updateScrollButtons);
-  }, []);
+  }, [updateScrollButtons]);
 
   useEffect(() => {
     if (didInitialScroll.current) return;

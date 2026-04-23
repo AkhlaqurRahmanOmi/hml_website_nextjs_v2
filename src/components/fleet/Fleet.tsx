@@ -13,7 +13,8 @@ type FleetKey =
   | "megacaravan2"
   | "megatrust"
   | "megapassion"
-  | "cydf";
+  | "cydf"
+  | "nb";
 
 const slideFadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -32,7 +33,7 @@ export const FleetPage = () => {
               <h1 className="font-dmsans text-5xl md:text-6xl lg:text-7xl font-bold md:font-normal lg:font-bold text-[#094d82] mb-6">
                 FLEET INFORMATION
               </h1>
-              <TabsList className="grid grid-cols-2 md:grid-cols-5 md:tracking-wide gap-2">
+              <TabsList className="grid grid-cols-2 md:grid-cols-4 md:tracking-wide gap-2">
                 <TabsTrigger
                   value="megacaravan"
                   className="flex flex-col items-center lg:text-md font-semibold"
@@ -64,6 +65,12 @@ export const FleetPage = () => {
                   className="flex flex-col items-center lg:text-md font-semibold"
                 >
                   CYDF <span className="text-[12px]">25,163mt</span>
+                </TabsTrigger>
+                <TabsTrigger
+                  value="nb"
+                  className="flex flex-col items-center lg:text-md font-semibold"
+                >
+                  NB <span className="text-[12px]">22,745mt</span>
                 </TabsTrigger>
               </TabsList>
             </div>
@@ -99,6 +106,7 @@ export const FleetPage = () => {
               // "megatrust",
               // "megapassion",
               "cydf",
+              "nb",
             ] as FleetKey[]
           ).map((tab) => {
             const fleetData = FleetData.find((f) => f.id === tab);
@@ -122,16 +130,18 @@ export const FleetPage = () => {
                       <h2 className="text-4xl lg:text-5xl text-nowrap font-bold text-[#094d82] uppercase mb-2 md:mb-6">
                         {fleetData.name}
                       </h2>
-                      <a
-                        href={fleetData.GA}
-                        download
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-[#094d82] text-white p-2 md:px-4 md:py-2 uppercase text-xs md:text-sm font-medium rounded-md flex items-center gap-2 hover:bg-[#0a3f6d] transition"
-                      >
-                        <FaDownload className="w-3 h-4" />
-                        Download GA
-                      </a>
+                      {fleetData.GA && (
+                        <a
+                          href={fleetData.GA}
+                          download
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-[#094d82] text-white p-2 md:px-4 md:py-2 uppercase text-xs md:text-sm font-medium rounded-md flex items-center gap-2 hover:bg-[#0a3f6d] transition"
+                        >
+                          <FaDownload className="w-3 h-4" />
+                          Download GA
+                        </a>
+                      )}
                     </div>
 
                     {/* Specifications */}
