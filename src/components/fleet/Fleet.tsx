@@ -45,6 +45,7 @@ export const FleetPage = () => {
                 >
                   MEGA CARAVAN 2 <span className="text-[12px]">17,700mt</span>
                 </TabsTrigger>
+                {/*
                 <TabsTrigger
                   value="megatrust"
                   className="flex flex-col items-center lg:text-md font-semibold"
@@ -57,6 +58,7 @@ export const FleetPage = () => {
                 >
                   MEGA PASSION <span className="text-[12px]">52,300mt</span>
                 </TabsTrigger>
+                */}
                 <TabsTrigger
                   value="cydf"
                   className="flex flex-col items-center lg:text-md font-semibold"
@@ -94,8 +96,8 @@ export const FleetPage = () => {
             [
               "megacaravan",
               "megacaravan2",
-              "megatrust",
-              "megapassion",
+              // "megatrust",
+              // "megapassion",
               "cydf",
             ] as FleetKey[]
           ).map((tab) => {
