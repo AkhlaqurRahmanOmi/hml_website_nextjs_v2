@@ -27,9 +27,12 @@ export const EngineeringCard = ({
             { threshold: 0.2 }
         );
 
-        if (ref.current) observer.observe(ref.current);
+        const element = ref.current;
+        if (!element) return;
+
+        observer.observe(element);
         return () => {
-            if (ref.current) observer.unobserve(ref.current);
+            observer.unobserve(element);
         };
     }, []);
 

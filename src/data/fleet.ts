@@ -236,4 +236,28 @@ export const FleetData = [
             },
         ],
     },
+    {
+        id: "nb",
+        name: "NB",
+        weight: "22,745mt",
+        image: "/images/webp/nb-image.png",
+        loa: "165m",
+        breadth: "MAX with sponson 45.00m / MLD 42.00m",
+        freedeck: "140 x 45m",
+        depth: "10.00m",
+        draft: "6.60m",
+        deadweight: "22,745MT",
+        speed: "11.5knots",
+        propulsion: "3800KW x 2",
+        ballastcapacity: "2500 x 4 m3/h",
+        GA: "/nb_ga.pdf",
+        description:
+            "NB uses its dedicated vessel image and GA file.",
+        fleetProjects: [
+            {
+                projectName: "NB",
+                image: "/images/webp/NB.png",
+            },
+        ],
+    },
 ];
