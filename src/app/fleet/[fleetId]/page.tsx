@@ -81,19 +81,21 @@ export default async function Page({ params }: { params: Promise<{ fleetId: stri
         </aside>
         <div className="flex flex-col">
           <h1 className="text-4xl text-start text-nowrap lg:text-6xl font-bold text-[#094d82] w-2/5 uppercase">{fleetData.name}</h1>
-          <div className="flex justify-end mt-6">
-            <button className="bg-[#0b4c84] text-white font-medium shadow-[0_8px_16px_-8px_rgba(0,0,0,0.6)] hover:bg-[#0a3f6d] transition">
-              <a
-                download
-                className="bg-[#094d82]  text-white px-4 py-2 uppercase text-sm font-medium flex rounded-md items-center"
-                href={fleetData.GA}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Download GA
-              </a>
-            </button>
-          </div>
+          {fleetData.GA && (
+            <div className="flex justify-end mt-6">
+              <button className="bg-[#0b4c84] text-white font-medium shadow-[0_8px_16px_-8px_rgba(0,0,0,0.6)] hover:bg-[#0a3f6d] transition">
+                <a
+                  download
+                  className="bg-[#094d82]  text-white px-4 py-2 uppercase text-sm font-medium flex rounded-md items-center"
+                  href={fleetData.GA}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Download GA
+                </a>
+              </button>
+            </div>
+          )}
 
         </div>
       </div>

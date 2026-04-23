@@ -12,15 +12,16 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
     const pathname = usePathname();
+    const normalizedPath = (pathname ?? "").replace(/\/$/, "");
     const aboutMenu = [
         { name: "ABOUT US", link: "/about" },
         { name: "MEDIA", link: "/media" },
         { name: "NEWS", link: "/news-events" },
     ];
     const isAboutActive =
-        pathname.replace(/\/$/, "") === "/about" ||
-        pathname.startsWith("/news-events") ||
-        pathname.startsWith("/media");
+        normalizedPath === "/about" ||
+        normalizedPath.startsWith("/news-events") ||
+        normalizedPath.startsWith("/media");
 
     return (
         <>
@@ -45,8 +46,8 @@ export default function Navbar() {
                             <Link
                                 href="/"
                                 className={`py-1 uppercase relative group transition-all duration-300 
-                                        ${pathname.replace(/\/$/, "") === ""
-                                        || pathname.replace(/\/$/, "") === "/"
+                                        ${normalizedPath === ""
+                                        || normalizedPath === "/"
                                         ? "font-semibold text-[#094d82] border-[#094d82] border-b-2 "
                                         : "text-black font-semibold  hover:text-[#0e3d61]  hover:border-[#0e3d61]"}`}
                             >
@@ -79,7 +80,7 @@ export default function Navbar() {
                                     key={link.name}
                                     href={link.link}
                                     className={`py-1 uppercase relative group transition-all duration-300 
-                                        ${pathname.replace(/\/$/, "") === link.link.replace(/\/$/, "")
+                                        ${normalizedPath === link.link.replace(/\/$/, "")
                                             ? "font-semibold text-[#094d82] border-[#094d82] border-b-2 "
                                             : "text-black font-semibold  hover:text-[#0e3d61]  hover:border-[#0e3d61]"}`}
                                 >
@@ -112,7 +113,7 @@ export default function Navbar() {
                                 <Link href="/" onClick={toggleMenu}>
                                     <p
                                         className={`transition-colors duration-300 
-                                            ${pathname.replace(/\/$/, "") === "" || pathname.replace(/\/$/, "") === "/"
+                                            ${normalizedPath === "" || normalizedPath === "/"
                                                 ? "font-semibold text-[#094d82] "
                                                 : "text-black font-semibold  hover:text-[#0e3d61]  hover:border-[#0e3d61]"}`} >
                                         HOME
@@ -124,7 +125,7 @@ export default function Navbar() {
                                 <Link href={link.link} onClick={toggleMenu}>
                                     <p
                                         className={`transition-colors duration-300 
-                                            ${pathname.replace(/\/$/, "") === link.link.replace(/\/$/, "")
+                                            ${normalizedPath === link.link.replace(/\/$/, "")
                                                 ? "font-semibold text-[#094d82] "
                                                 : "text-black font-semibold  hover:text-[#0e3d61]  hover:border-[#0e3d61]"}`} >
                                         {link.name}
@@ -137,7 +138,7 @@ export default function Navbar() {
                                 <Link href={link.link} onClick={toggleMenu}>
                                     <p
                                         className={`transition-colors duration-300 
-                                            ${pathname.replace(/\/$/, "") === link.link.replace(/\/$/, "")
+                                            ${normalizedPath === link.link.replace(/\/$/, "")
                                                 ? "font-semibold text-[#094d82] "
                                                 : "text-black font-semibold  hover:text-[#0e3d61]  hover:border-[#0e3d61]"}`} >
                                         {link.name}
