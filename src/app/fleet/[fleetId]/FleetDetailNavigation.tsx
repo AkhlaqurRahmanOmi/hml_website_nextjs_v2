@@ -22,7 +22,7 @@ export default function FleetDetailNavigation({
   nextFleetId,
 }: FleetDetailNavigationProps) {
   const searchParams = useSearchParams();
-  const returnTo = getSafeReturnTo(searchParams.get(HOME_RETURN_QUERY_KEY));
+  const returnTo = getSafeReturnTo(searchParams?.get(HOME_RETURN_QUERY_KEY));
 
   return (
     <FleetDetailNavigationShell
