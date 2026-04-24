@@ -16,18 +16,18 @@ export const AboutHero = () => {
       />
       <div className="absolute inset-0" />
       <div className="relative mx-auto flex min-h-[60vh] w-[100%] flex-col items-start justify-center gap-6 mt-[3%] text-start">
-        <div className={`transition-opacity duration-500 ease-in-out bg-[#094e8286] p-6 text-white w-full px-[10%] `}>
+        <div className={`transition-opacity duration-500 ease-in-out bg-[#094e8286] p-6 text-white w-full px-[10%] mt-[12vh]`}>
           <motion.h1
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="font-dmsans text-4xl font-bold uppercase md:text-5xl lg:text-6xl"
+            className="font-dmsans text-2xl font-bold uppercase md:text-4xl xl:text-6xl"
           >
             ABOUT US
           </motion.h1>
 
-          <div className="mt-4 space-y-4 w-full font-light text-sm md:text-lg">
+          <div className="mt-4 space-y-4 w-full font-light text-xs xl:text-xs leading-relaxed md:text-sm">
               {[
                 "HML, headquartered in Seoul, South Korea, is a leading provider of heavy marine transportation services. We own and operate two specialized heavy transport vessels and work in close partnership with two additional vessels to enhance our global project capacity.",
                 "Since our founding in 2009, HML has become one of the most trusted names in the marine transport industry. Our project-based operations and commitment to client satisfaction have made us a reliable partner across complex and large-scale logistics.",

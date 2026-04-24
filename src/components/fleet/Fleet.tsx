@@ -76,7 +76,7 @@ export const FleetPage = () => {
             </div>
 
             {/* Description */}
-            <div className="col-span-1 md:grid-cols-1 lg:col-span-2 font-medium space-y-4 mt-[60%] lg:mt-[50%] xl:mt-[50%] 2xl:mt-[40%] 3xl:mt-[40%] text-justify">
+            <div className="col-span-1 md:grid-cols-1 lg:col-span-2 font-medium space-y-4 mt-[5vh] xl:mt-[25vh] 3xl:mt-[20vh] text-justify">
               <p>
                 At HML, we deliver flexible and cost-effective transport
                 solutions by leveraging the expansive deck space of our vessels,
@@ -187,10 +187,20 @@ export const FleetPage = () => {
                 </motion.div>
 
                 {/* 🔄 Carousel now changes with active tab */}
+                
                 <MultipleSlideCarousel
                   key={fleetData.id}
                   fleetData={fleetData}
                 />
+                
+                {/* {fleetData?.fleetProjects && fleetData?.fleetProjects.length > 0 && (
+                <MultipleSlideCarousel
+                 key={fleetData.id}
+                 fleetData={fleetData}
+                 />
+                )} */}
+
+
               </TabsContent>
             );
           })}

@@ -35,8 +35,8 @@ export const CompnayHistory = () => {
                                     <h3 className="mb-1 text-lg font-semibold text-black/90 ">{item.year}</h3>
 
                                     {item.events.map((evt, idx) => (
-                                        <p key={idx} className="text-sm sm:text-base font-semibold text-black/90">
-                                            <span className="text-[#094d82] font-extrabold mr-4">{evt.month}</span>{evt.text}
+                                        <p key={idx} className="text-sm sm:text-base font-medium  text-black/90">
+                                            <span className="text-[#0b4b73]  drop-shadow-[0_2px_6px_rgba(255,255,255,0.3)] font-extrabold mr-4">{evt.month}</span>{evt.text}
                                         </p>
                                     ))}
                                 </li>
