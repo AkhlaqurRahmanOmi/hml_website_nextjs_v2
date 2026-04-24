@@ -6,10 +6,16 @@ import { HomeCrossMarketReachSection } from "@/components/home/CrossMarketReach"
 import { HomeProjectOverview } from "@/components/home/ProjectOverview";
 import NextProject from "@/components/home/NextProject";
 import FullPageWrapper from "@/utils/FullPageWrapper";
+import { HOME_FLEET_SECTION, HOME_PROJECT_SECTION } from "@/utils/homeSections";
+
+const homeRestoreSections = {
+  [HOME_FLEET_SECTION]: 2,
+  [HOME_PROJECT_SECTION]: 4,
+};
 
 export default function Home() {
   return (
-    <FullPageWrapper>
+    <FullPageWrapper restoreSections={homeRestoreSections}>
       <div className="section">
         <HomeHero />
       </div>

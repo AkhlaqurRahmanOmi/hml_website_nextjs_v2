@@ -5,6 +5,12 @@ import { PiLineVertical } from "react-icons/pi";
 import Link from "next/link";
 import { FaShip } from "react-icons/fa6";
 import HeroVideoWithFallback from "../../utils/HeroVideoWithFallback";
+import {
+  getHomeSectionHref,
+  HOME_FLEET_SECTION,
+  HOME_RETURN_QUERY_KEY,
+  HOME_SECTION_STORAGE_KEY,
+} from "@/utils/homeSections";
 
 export const FleetData = [
   {
@@ -23,11 +29,17 @@ export const FleetData = [
   },
   {
     title: "OUR LONG-TERM \nCHARTERING VESSEL",
-    vessels: [{ vesselName: "Chang Yang Dong Fang", vecelID: "changYangDongFang" }],
+    vessels: [{ vesselName: "Chang Yang Dong Fang", vecelID: "cydf" }],
   },
 ];
 
 export const HomeFleetOverview = () => {
+  const returnTo = getHomeSectionHref(HOME_FLEET_SECTION);
+
+  const handleFleetLinkClick = () => {
+    window.sessionStorage.setItem(HOME_SECTION_STORAGE_KEY, HOME_FLEET_SECTION);
+  };
+
   return (
     <section className="relative h-screen">
       <div className="relative h-full w-full overflow-hidden">
@@ -80,7 +92,13 @@ export const HomeFleetOverview = () => {
                       <div className="flex gap-2 lg:gap-10 justify-between" key={vessel.vecelID}>
                         <Link
                           className="uppercase flex font-normal text-base lg:text-md text-nowrap"
-                          href={`/fleet/${vessel.vecelID}`}
+                          href={{
+                            pathname: `/fleet/${vessel.vecelID}`,
+                            query: {
+                              [HOME_RETURN_QUERY_KEY]: returnTo,
+                            },
+                          }}
+                          onClick={handleFleetLinkClick}
                         >
                           <FaShip className="size-4 mt-1 mr-2" />
                           {vessel.vesselName}

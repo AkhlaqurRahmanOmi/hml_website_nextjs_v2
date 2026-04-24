@@ -17,7 +17,7 @@ export const HomeCrossMarketReachSection = () => {
     return (
         <section className="flex w-full min-h-screen">
             {/* Vertical Title */}
-            <div className="flex items-center justify-center w-[80px] bg-[#094d82] ">
+            <div className="flex items-center justify-center w-[80px] bg-[#094d82] pt-[10vh]">
                 <div className=" font-roboto text-4xl font-normal text-white transform -rotate-90 whitespace-nowrap uppercase tracking-wider" style={{
                     textShadow:
                         "2px 0px 0px rgba(0, 0, 0, 1), 0px 1px 4px rgba(0, 0, 0, 0.85)",

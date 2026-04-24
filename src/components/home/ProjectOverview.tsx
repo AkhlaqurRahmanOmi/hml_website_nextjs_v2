@@ -3,10 +3,15 @@
 import { HomeProject } from "@/data/project";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { FaAngleLeft, FaAngleRight, FaXmark } from "react-icons/fa6";
-import Portal from "@/utils/portal";
+import {
+  getHomeSectionHref,
+  HOME_PROJECT_SECTION,
+  HOME_RETURN_QUERY_KEY,
+  HOME_SECTION_STORAGE_KEY,
+} from "@/utils/homeSections";
 
 type Project = {
   id: string | number;
@@ -85,7 +90,6 @@ export const HomeProjectOverview = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [activeYear, setActiveYear] = useState<number>(2025);
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const availableYearsAsc = useMemo(() => {
     const set = new Set<number>();
@@ -178,33 +182,15 @@ export const HomeProjectOverview = () => {
     scrollToYear(String(activeYear));
   }, [activeYear, scrollToYear]);
 
-  const selectedProject = selectedIndex != null ? projects[selectedIndex] : null;
+  const returnTo = getHomeSectionHref(HOME_PROJECT_SECTION);
 
-  const closeModal = () => setSelectedIndex(null);
-
-  const navigateModal = useCallback((dir: "prev" | "next") => {
-    if (selectedIndex == null) return;
-    const nextIndex =
-      dir === "prev"
-        ? (selectedIndex - 1 + projects.length) % projects.length
-        : (selectedIndex + 1) % projects.length;
-    setSelectedIndex(nextIndex);
-  }, [projects.length, selectedIndex]);
-
-  useEffect(() => {
-    if (selectedIndex == null) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeModal();
-      if (e.key === "ArrowLeft") navigateModal("prev");
-      if (e.key === "ArrowRight") navigateModal("next");
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [navigateModal, selectedIndex]);
+  const handleProjectClick = () => {
+    window.sessionStorage.setItem(HOME_SECTION_STORAGE_KEY, HOME_PROJECT_SECTION);
+  };
 
   return (
     <section id="project-overview" className="min-h-screen flex flex-col justify-center relative">
-      <div className="px-4 md:px-[3%] flex gap-4 md:flex-row justify-between items-center md:mt-16">
+      <div className="px-4 md:px-[3%] flex gap-4 md:flex-row justify-between items-center mt-[10vh]">
         <h1 className="mb-2">
           <span
             className="font-roboto text-2xl md:text-3xl 2xl:text-5xl font-bold text-[#094d82] block text-start uppercase"
@@ -270,17 +256,22 @@ export const HomeProjectOverview = () => {
 
       <div ref={scrollRef} className="flex gap-4 overflow-x-auto py-2 px-4 2xl:p-6 scroll-smooth hide-scrollbar">
         <AnimatePresence>
-          {projects.map((project, idx) => (
+          {projects.map((project) => (
             <div
               key={project.id}
               data-year={project.__year != null ? String(project.__year) : ""}
               className="shrink-0 w-[50%] sm:w-[50%] md:w-[30%] lg:w-[20%] min-w-[50%] sm:min-w-[50%] md:min-w-[30%] lg:min-w-[20%]"
             >
-              <button
-                type="button"
-                onClick={() => setSelectedIndex(idx)}
+              <Link
+                href={{
+                  pathname: `/projects/${project.id}`,
+                  query: {
+                    [HOME_RETURN_QUERY_KEY]: returnTo,
+                  },
+                }}
+                onClick={handleProjectClick}
                 className="w-full text-left"
-                aria-label={`Open details for ${project.name}`}
+                aria-label={`Open project details for ${project.name}`}
               >
                 <motion.div
                   layout
@@ -303,104 +294,11 @@ export const HomeProjectOverview = () => {
                   <span className="font-bold text-[#094d82]">{project.name}:</span>{" "}
                   <span className="font-normal">{project.description}</span>
                 </p>
-              </button>
+              </Link>
             </div>
           ))}
         </AnimatePresence>
       </div>
-
-      {selectedProject && (
-        <Portal>
-          <div
-            className="fixed inset-0 z-50 bg-[#f4f7fc]"
-            onClick={closeModal}
-          >
-            <div
-              className="relative h-full w-full overflow-y-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <style>{`
-                .wave {
-                  animation: waveAnimation 2s infinite ease-in-out;
-                }
-                @keyframes waveAnimation {
-                  0%,100% { transform: translateX(0px); }
-                  50% { transform: translateX(5px); }
-                }
-              `}</style>
-
-              <button
-                type="button"
-                onClick={closeModal}
-                aria-label="Close project details"
-                className="absolute right-4 top-4 md:right-6 md:top-6 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-[#094d82] shadow-md transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#094d82]/40"
-              >
-                <FaXmark className="text-xl" />
-              </button>
-
-              <div className="flex justify-between px-[10%] md:px-[5%] pt-16">
-                <button type="button" onClick={() => navigateModal("prev")} className="flex">
-                  <FaAngleLeft className="text-3xl lg:text-7xl text-[#094e82be] wave" />
-                  <FaAngleLeft className="-ml-12 text-3xl lg:text-7xl text-[#094e827e] wave" />
-                  <FaAngleLeft className="-ml-12 text-3xl lg:text-7xl text-[#094e824d] wave" />
-                </button>
-                <div />
-                <button type="button" onClick={() => navigateModal("next")} className="flex">
-                  <FaAngleRight className="-mr-12 text-3xl lg:text-7xl text-[#094e824d] wave" />
-                  <FaAngleRight className="-mr-12 text-3xl lg:text-7xl text-[#094e827e] wave" />
-                  <FaAngleRight className="text-3xl lg:text-7xl text-[#094e82be] wave" />
-                </button>
-              </div>
-
-              <div className="flex flex-col lg:flex-row items-center justify-center p-6 lg:p-12 gap-6 lg:gap-12">
-                <div className="flex-shrink-0">
-                  <Image
-                    src={selectedProject.image || "/placeholder.svg"}
-                    alt={selectedProject.name}
-                    width={600}
-                    height={350}
-                    className="rounded-md shadow-sm object-cover"
-                    loading="eager"
-                  />
-                </div>
-
-                <div className="w-full lg:w-1/2 text-center lg:text-left font-roboto">
-                  <h2 className="font-worksans text-2xl md:text-3xl lg:text-4xl font-semibold text-[#094d82] mb-2 uppercase">
-                    {selectedProject.name}
-                  </h2>
-                  <p className="text-lg text-black mb-4">{selectedProject.description}</p>
-                  {(() => {
-                    const metaItems = [
-                      { label: "Client", value: selectedProject.client },
-                      { label: "Cargo", value: selectedProject.cargo },
-                      { label: "POL", value: selectedProject.pol },
-                      { label: "POD", value: selectedProject.pod },
-                      { label: "Duration", value: selectedProject.duration },
-                      { label: "Vessel", value: selectedProject.vessel },
-                    ].filter((item) => item.value);
-
-                    if (!metaItems.length) return null;
-
-                    return (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left text-sm text-gray-700 mb-4">
-                        {metaItems.map((item) => (
-                          <div key={item.label} className="flex gap-2">
-                            <span className="font-semibold text-[#094d82]">{item.label}:</span>
-                            <span>{item.value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    );
-                  })()}
-                  <p className="text-base text-gray-700 leading-relaxed text-justify whitespace-pre-line">
-                    {selectedProject.projectDetails}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Portal>
-      )}
     </section>
   );
 };

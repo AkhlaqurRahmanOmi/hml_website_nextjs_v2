@@ -36,12 +36,13 @@ export default async function Page({
 
   return (
     <main className="min-h-screen bg-white">
-      <section className="relative h-[300px] sm:h-[360px] lg:h-[480px] w-full overflow-hidden">
+      <section className="relative flex h-[80vh] w-full items-center justify-center overflow-hidden bg-[#0b2d4a]">
         <Image
           src={projectData.image}
-          alt={projectData.name}
+          alt=""
           fill
           priority
+          aria-hidden="true"
           sizes="100vw"
           className="object-cover"
         />

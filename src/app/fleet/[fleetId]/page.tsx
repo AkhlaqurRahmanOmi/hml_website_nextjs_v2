@@ -1,7 +1,8 @@
-import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 import Image from "next/image";
-import Link from "next/link";
 import { FleetData } from "@/data/fleet";
+import { Suspense } from "react";
+import FleetDetailNavigation from "./FleetDetailNavigation";
+import FleetDetailNavigationShell from "./FleetDetailNavigationShell";
 
 export const dynamicParams = false;
 
@@ -26,7 +27,7 @@ export default async function Page({ params }: { params: Promise<{ fleetId: stri
   }
 
   return (
-    <section className="min-h-screen flex flex-col p-4 px-4 md:px-[5%] py-16">
+    <section className="relative min-h-screen flex flex-col p-4 px-4 md:px-[5%] py-16">
       <style>{`
         .wave {
             animation: waveAnimation 2s infinite ease-in-out;
@@ -37,23 +38,20 @@ export default async function Page({ params }: { params: Promise<{ fleetId: stri
         }
       `}</style>
 
-      <div className="flex justify-between px-[5%]">
-        {prevFleet && (
-          <Link href={`/fleet/${prevFleet.id}`} className="flex">
-            <FaAngleLeft className="text-3xl lg:text-7xl text-[#094e82be] wave" />
-            <FaAngleLeft className="-ml-12 text-3xl lg:text-7xl text-[#094e827e] wave" />
-            <FaAngleLeft className="-ml-12 text-3xl lg:text-7xl text-[#094e824d] wave" />
-          </Link>
-        )}
-        <div />
-        {nextFleet && (
-          <Link href={`/fleet/${nextFleet.id}`} className="flex">
-            <FaAngleRight className="-mr-12 text-3xl lg:text-7xl text-[#094e824d] wave" />
-            <FaAngleRight className="-mr-12 text-3xl lg:text-7xl text-[#094e827e] wave" />
-            <FaAngleRight className="text-3xl lg:text-7xl text-[#094e82be] wave" />
-          </Link>
-        )}
-      </div>
+      <Suspense
+        fallback={
+          <FleetDetailNavigationShell
+            returnTo="/fleet"
+            prevFleetId={prevFleet?.id}
+            nextFleetId={nextFleet?.id}
+          />
+        }
+      >
+        <FleetDetailNavigation
+          prevFleetId={prevFleet?.id}
+          nextFleetId={nextFleet?.id}
+        />
+      </Suspense>
 
       <div className="flex flex-col-reverse md:flex-row justify-center items-start gap-8 px-10 md:px-[10%] mt-[5%]">
         <aside className="w-3/5">
@@ -105,7 +103,7 @@ export default async function Page({ params }: { params: Promise<{ fleetId: stri
         alt={fleetData.name}
         width={1800}
         height={1000}
-        className="m-0 md:-mt-20"
+        className="mt-[3%] mx-auto"
       />
     </section>
   );
