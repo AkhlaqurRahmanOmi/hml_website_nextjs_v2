@@ -187,10 +187,20 @@ export const FleetPage = () => {
                 </motion.div>
 
                 {/* 🔄 Carousel now changes with active tab */}
+                
                 <MultipleSlideCarousel
                   key={fleetData.id}
                   fleetData={fleetData}
                 />
+                
+                {/* {fleetData?.fleetProjects && fleetData?.fleetProjects.length > 0 && (
+                <MultipleSlideCarousel
+                 key={fleetData.id}
+                 fleetData={fleetData}
+                 />
+                )} */}
+
+
               </TabsContent>
             );
           })}
