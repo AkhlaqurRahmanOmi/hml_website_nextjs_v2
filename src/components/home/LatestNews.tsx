@@ -1,9 +1,15 @@
 "use client";
 
+import { Footer } from "@/components/Global/footer";
+import { newsEvents } from "@/data/newsEvents";
+import {
+  getHomeSectionHref,
+  HOME_LATEST_NEWS_SECTION,
+  HOME_RETURN_QUERY_KEY,
+  HOME_SECTION_STORAGE_KEY,
+} from "@/utils/homeSections";
 import Image from "next/image";
 import Link from "next/link";
-import { newsEvents } from "@/data/newsEvents";
-import { Footer } from "@/components/Global/footer";
 import { useMemo, useState } from "react";
 
 const PAGE_SIZE = 10;
@@ -22,9 +28,14 @@ const MONTH_ORDER: Record<string, number> = {
   DEC: 12,
 };
 
-const NextProject = () => {
+const LatestNews = () => {
   const events = newsEvents.slice(0, PAGE_SIZE);
   const [view, setView] = useState<"list" | "month">("list");
+  const returnTo = getHomeSectionHref(HOME_LATEST_NEWS_SECTION);
+
+  const handleNewsClick = () => {
+    window.sessionStorage.setItem(HOME_SECTION_STORAGE_KEY, HOME_LATEST_NEWS_SECTION);
+  };
 
   const sortedEvents = useMemo(() => {
     return [...events].sort((a, b) => {
@@ -46,14 +57,14 @@ const NextProject = () => {
   }, [sortedEvents]);
 
   return (
-    <section className="font-helveticaneue">
-      <div className="mx-auto w-[95%] px-4 sm:px-6 lg:px-8 py-10 pt-24 sm:pt-28 lg:pt-32 lg:pb-12">
+    <section id={HOME_LATEST_NEWS_SECTION} className="font-helveticaneue">
+      <div className="mx-auto w-[95%] px-4 py-10 pt-24 sm:px-6 sm:pt-28 lg:px-8 lg:pt-32 lg:pb-12">
         <div className="flex items-start justify-between">
-          <h1 className="text-3xl sm:text-4xl font-black tracking-wide text-[#094d82] uppercase">
+          <h1 className="text-3xl font-black tracking-wide text-[#094d82] uppercase sm:text-4xl">
             LATEST NEWS
           </h1>
 
-          <div className="flex items-center gap-6 text-[#7a8ea3] text-xs font-semibold">
+          <div className="flex items-center gap-6 text-xs font-semibold text-[#7a8ea3]">
             <button
               type="button"
               onClick={() => setView("list")}
@@ -85,9 +96,9 @@ const NextProject = () => {
         </div>
 
         <div className="relative mt-6 border border-slate-200 border-l-0 bg-white p-2">
-          <div className="absolute inset-0 bg-[url('/images/world-map-dots.jpeg')] bg-no-repeat bg-center [background-size:115%_115%] opacity-80 pointer-events-none" />
+          <div className="pointer-events-none absolute inset-0 bg-[url('/images/world-map-dots.jpeg')] bg-center bg-no-repeat opacity-80 [background-size:115%_115%]" />
 
-          <div className="relative divide-y divide-slate-200 max-h-[70vh] overflow-y-auto pr-4 -mr-4 sm:pr-6 sm:-mr-6 lg:pr-2 lg:-mr-2 custom-scrollbar">
+          <div className="relative custom-scrollbar max-h-[70vh] divide-y divide-slate-200 overflow-y-auto pr-4 -mr-4 sm:pr-6 sm:-mr-6 lg:pr-2 lg:-mr-2">
             {view === "list" ? (
               sortedEvents.map((event) => {
                 const imageSrc = event.image || event.images?.[0];
@@ -97,17 +108,18 @@ const NextProject = () => {
                     : Boolean(imageSrc);
                 const imageAlt = event.title;
                 const preview = event.body.replace(/\s+/g, " ").slice(0, 220).trim();
+
                 return (
                   <article
                     key={event.id}
-                    className="grid grid-cols-1 gap-y-4 gap-x-6 py-4 sm:gap-y-4 sm:gap-x-6 lg:grid-cols-[12%_23%_60%] lg:items-start"
+                    className="grid grid-cols-1 gap-x-6 gap-y-4 py-4 sm:gap-x-6 sm:gap-y-4 lg:grid-cols-[12%_23%_60%] lg:items-start"
                   >
-                    <div className="text-[#0b4b73] text-left lg:text-center my-auto">
+                    <div className="my-auto text-left text-[#0b4b73] lg:text-center">
                       <div className="text-xl font-extrabold uppercase">{event.date.month}</div>
                       <div className="text-lg font-light leading-none">{event.date.day}</div>
                     </div>
 
-                    <div className="relative w-full h-32 sm:h-36 overflow-hidden border border-slate-200 bg-white">
+                    <div className="relative h-32 w-full overflow-hidden border border-slate-200 bg-white sm:h-36">
                       {hasImage ? (
                         <Image
                           src={imageSrc as string}
@@ -117,7 +129,7 @@ const NextProject = () => {
                           className="object-cover"
                         />
                       ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-gray-200 px-2 text-center text-[11px] font-semibold uppercase tracking-wide text-[#6b7d90] leading-tight">
+                        <div className="flex h-full w-full items-center justify-center bg-gray-200 px-2 text-center text-[11px] font-semibold uppercase tracking-wide leading-tight text-[#6b7d90]">
                           {imageAlt}
                         </div>
                       )}
@@ -138,7 +150,13 @@ const NextProject = () => {
                         </p>
                       )}
                       <Link
-                        href={`/news-events/${event.id}`}
+                        href={{
+                          pathname: `/news-events/${event.id}`,
+                          query: {
+                            [HOME_RETURN_QUERY_KEY]: returnTo,
+                          },
+                        }}
+                        onClick={handleNewsClick}
                         className="mt-2 inline-flex text-xs font-semibold text-[#2b3f52]"
                       >
                         Learn More
@@ -162,17 +180,18 @@ const NextProject = () => {
                           : Boolean(imageSrc);
                       const imageAlt = event.title;
                       const preview = event.body.replace(/\s+/g, " ").slice(0, 220).trim();
+
                       return (
                         <article
                           key={event.id}
-                          className="grid grid-cols-1 gap-y-4 gap-x-6 py-3 sm:gap-y-4 sm:gap-x-6 lg:grid-cols-[12%_23%_60%] lg:items-start"
+                          className="grid grid-cols-1 gap-x-6 gap-y-4 py-3 sm:gap-x-6 sm:gap-y-4 lg:grid-cols-[12%_23%_60%] lg:items-start"
                         >
-                          <div className="text-[#0b4b73] text-left lg:text-center my-auto">
+                          <div className="my-auto text-left text-[#0b4b73] lg:text-center">
                             <div className="text-base font-bold uppercase">{event.date.month}</div>
                             <div className="text-lg font-light leading-none">{event.date.day}</div>
                           </div>
 
-                          <div className="relative w-full h-32 sm:h-36 overflow-hidden border border-slate-200 bg-white">
+                          <div className="relative h-32 w-full overflow-hidden border border-slate-200 bg-white sm:h-36">
                             {hasImage ? (
                               <Image
                                 src={imageSrc as string}
@@ -182,7 +201,7 @@ const NextProject = () => {
                                 className="object-cover"
                               />
                             ) : (
-                              <div className="flex h-full w-full items-center justify-center bg-gray-200 px-2 text-center text-[11px] font-semibold uppercase tracking-wide text-[#6b7d90] leading-tight">
+                              <div className="flex h-full w-full items-center justify-center bg-gray-200 px-2 text-center text-[11px] font-semibold uppercase tracking-wide leading-tight text-[#6b7d90]">
                                 {imageAlt}
                               </div>
                             )}
@@ -203,7 +222,13 @@ const NextProject = () => {
                               </p>
                             )}
                             <Link
-                              href={`/news-events/${event.id}`}
+                              href={{
+                                pathname: `/news-events/${event.id}`,
+                                query: {
+                                  [HOME_RETURN_QUERY_KEY]: returnTo,
+                                },
+                              }}
+                              onClick={handleNewsClick}
                               className="mt-2 inline-flex text-xs font-semibold text-[#2b3f52]"
                             >
                               Learn More
@@ -220,11 +245,11 @@ const NextProject = () => {
         </div>
       </div>
 
-      <div className="mt-auto relative z-10">
+      <div className="relative z-10 mt-auto">
         <Footer />
       </div>
     </section>
   );
 };
 
-export default NextProject;
+export default LatestNews;

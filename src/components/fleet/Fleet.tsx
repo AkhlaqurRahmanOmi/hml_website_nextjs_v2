@@ -1,10 +1,10 @@
 "use client";
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { FaDownload } from "react-icons/fa6";
-import Image from "next/image";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FleetData } from "@/data/fleet";
-import { motion, easeOut } from "framer-motion";
+import { easeOut, motion } from "framer-motion";
+import Image from "next/image";
+import { FaDownload } from "react-icons/fa6";
 import { Footer } from "../Global/footer";
 import MultipleSlideCarousel from "./MultipleSlideCarouselProps";
 
@@ -22,155 +22,122 @@ const slideFadeIn = {
   exit: { opacity: 0, y: -30, transition: { duration: 0.3, ease: easeOut } },
 };
 
+const visibleFleetTabs = [
+  { value: "megacaravan", label: "MEGA CARAVAN", weight: "16,200mt" },
+  { value: "megacaravan2", label: "MEGA CARAVAN 2", weight: "17,700mt" },
+  { value: "cydf", label: "CYDF", weight: "25,163mt" },
+  { value: "nb", label: "NB", weight: "22,745mt" },
+] satisfies Array<{ value: FleetKey; label: string; weight: string }>;
+
+const FleetDescription = ({ className = "" }: { className?: string }) => (
+  <div className={className}>
+    <p>
+      At HML, we deliver flexible and cost-effective transport solutions by
+      leveraging the expansive deck space of our vessels, maximizing cargo
+      capacity in a single shipment. Designed with high deck load strength and
+      an open-stern configuration, our vessels enable loading and discharging
+      from both the stern and sides. A key advantage of the HML fleet is the
+      shallow vessel draft, allowing access to ports with limited water depth,
+      eliminating the need for spacer barges or additional floating equipment.
+    </p>
+    <p>
+      All vessels operated by HML adhere to international ship and crew
+      management standards, including ISM, OSAS, and CMID. They are
+      asbestos-free and meet the highest quarantine and environmental
+      regulations, ensuring safe, efficient, and sustainable operations.
+    </p>
+  </div>
+);
+
 export const FleetPage = () => {
   return (
     <section className="min-h-screen flex flex-col">
-      <div className="px-4 md:px-[5%] 2xl:px-[10%] pt-32 lg:pt-40 pb-10 flex-grow">
+      <div className="flex-grow px-4 pt-32 pb-10 md:px-[5%] lg:pt-40 2xl:px-[10%]">
         <Tabs defaultValue="megacaravan" className="w-full">
-          <div className="grid grid-cols-1 xl:grid-cols-5 gap-10 items-start mb-24 md:mb-10">
-            {/* Tabs + GA Download */}
-            <div className="col-span-1 lg:col-span-3">
-              <h1 className="font-dmsans text-5xl md:text-6xl lg:text-7xl font-bold md:font-normal lg:font-bold text-[#094d82] mb-6">
+          <div className="mb-6 md:mb-4">
+            <div className="w-full lg:w-1/2 2xl:w-full 2xl:max-w-[56rem]">
+              <h1 className="mb-6 font-dmsans text-5xl font-bold text-[#094d82] md:text-6xl md:font-normal lg:text-7xl lg:font-bold">
                 FLEET INFORMATION
               </h1>
-              <TabsList className="grid grid-cols-2 md:grid-cols-4 md:tracking-wide gap-2">
-                <TabsTrigger
-                  value="megacaravan"
-                  className="flex flex-col items-center lg:text-md font-semibold"
-                >
-                  MEGA CARAVAN <span className="text-[12px]">16,200mt</span>
-                </TabsTrigger>
-                <TabsTrigger
-                  value="megacaravan2"
-                  className="flex flex-col items-center lg:text-md font-semibold"
-                >
-                  MEGA CARAVAN 2 <span className="text-[12px]">17,700mt</span>
-                </TabsTrigger>
-                {/*
-                <TabsTrigger
-                  value="megatrust"
-                  className="flex flex-col items-center lg:text-md font-semibold"
-                >
-                  MEGA TRUST <span className="text-[12px]">19,200mt</span>
-                </TabsTrigger>
-                <TabsTrigger
-                  value="megapassion"
-                  className="flex flex-col items-center lg:text-md font-semibold"
-                >
-                  MEGA PASSION <span className="text-[12px]">52,300mt</span>
-                </TabsTrigger>
-                */}
-                <TabsTrigger
-                  value="cydf"
-                  className="flex flex-col items-center lg:text-md font-semibold"
-                >
-                  CYDF <span className="text-[12px]">25,163mt</span>
-                </TabsTrigger>
-                <TabsTrigger
-                  value="nb"
-                  className="flex flex-col items-center lg:text-md font-semibold"
-                >
-                  NB <span className="text-[12px]">22,745mt</span>
-                </TabsTrigger>
+              <TabsList className="grid grid-cols-2 gap-2 pb-2 md:grid-cols-4 md:tracking-wide md:pb-3">
+                {visibleFleetTabs.map((fleet) => (
+                  <TabsTrigger
+                    key={fleet.value}
+                    value={fleet.value}
+                    className="flex flex-col items-center text-nowrap text-center font-semibold leading-tight whitespace-normal lg:text-md"
+                  >
+                    {fleet.label}
+                    <span className="text-[12px]">{fleet.weight}</span>
+                  </TabsTrigger>
+                ))}
               </TabsList>
             </div>
 
-            {/* Description */}
-            <div className="col-span-1 md:grid-cols-1 lg:col-span-2 font-medium space-y-4 mt-[5vh] xl:mt-[25vh] 3xl:mt-[20vh] text-justify">
-              <p>
-                At HML, we deliver flexible and cost-effective transport
-                solutions by leveraging the expansive deck space of our vessels,
-                maximizing cargo capacity in a single shipment. Designed with
-                high deck load strength and an open-stern configuration, our
-                vessels enable loading and discharging from both the stern and
-                sides. A key advantage of the HML fleet is the shallow vessel
-                draft, allowing access to ports with limited water
-                depth—eliminating the need for spacer barges or additional
-                floating equipment.
-              </p>
-              <p>
-                All vessels operated by HML adhere to international ship and
-                crew management standards, including ISM, OSAS, and CMID. They
-                are asbestos-free and meet the highest quarantine and
-                environmental regulations, ensuring safe, efficient, and
-                sustainable operations.
-              </p>
-            </div>
+            <FleetDescription className="mt-6 space-y-4 text-justify font-medium lg:hidden" />
           </div>
 
-          {/* Tab Content */}
-          {(
-            [
-              "megacaravan",
-              "megacaravan2",
-              // "megatrust",
-              // "megapassion",
-              "cydf",
-              "nb",
-            ] as FleetKey[]
-          ).map((tab) => {
-            const fleetData = FleetData.find((f) => f.id === tab);
+          {visibleFleetTabs.map(({ value: tab }) => {
+            const fleetData = FleetData.find((fleet) => fleet.id === tab);
             if (!fleetData) return null;
 
+            const specifications = [
+              ["LOA", fleetData.loa],
+              ["Breadth", fleetData.breadth],
+              ["Free deck", fleetData.freedeck],
+              ["Depth", fleetData.depth],
+              ["Draft", fleetData.draft],
+              ["Deadweight", fleetData.deadweight],
+              ["Speed", fleetData.speed],
+              ["Propulsion", fleetData.propulsion],
+              ["Ballast capacity", fleetData.ballastcapacity],
+            ] as const;
+
             return (
-              <TabsContent
-                value={tab}
-                className="mt-6 2xl:mt-10 space-t-10"
-                key={tab}
-              >
+              <TabsContent value={tab} className="mt-0 2xl:mt-2" key={tab}>
                 <motion.div
                   variants={slideFadeIn}
                   initial="hidden"
                   animate="visible"
                   exit="hidden"
                 >
-                  <div className="flex flex-col-reverse lg:flex-col justify-center gap-8 2xl:mt-6">
-                    {/* Name + Download */}
-                    <div className="flex flex-col items-start -mt-0 xl:-mt-[380px] 2xl:-mt-[350px]">
-                      <h2 className="text-4xl lg:text-5xl text-nowrap font-bold text-[#094d82] uppercase mb-2 md:mb-6">
-                        {fleetData.name}
-                      </h2>
-                      {fleetData.GA && (
-                        <a
-                          href={fleetData.GA}
-                          download
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="bg-[#094d82] text-white p-2 md:px-4 md:py-2 uppercase text-xs md:text-sm font-medium rounded-md flex items-center gap-2 hover:bg-[#0a3f6d] transition"
-                        >
-                          <FaDownload className="w-3 h-4" />
-                          Download GA
-                        </a>
-                      )}
+                  <div className="grid grid-cols-1 gap-5 md:gap-6 lg:grid-cols-5 lg:gap-x-10 lg:gap-y-3 xl:gap-y-2">
+                    <div className="col-span-1 flex flex-col gap-5 md:gap-6 lg:col-span-3 lg:gap-3 xl:gap-2">
+                      <div className="flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between lg:flex-col lg:items-start lg:justify-start">
+                        <h2 className="max-w-full text-[clamp(2rem,6vw,3rem)] font-bold uppercase leading-none tracking-tight text-[#094d82] whitespace-normal lg:whitespace-nowrap">
+                          {fleetData.name}
+                        </h2>
+                        {fleetData.GA && (
+                          <a
+                            href={fleetData.GA}
+                            download
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 rounded-md bg-[#094d82] p-2 text-xs font-medium uppercase text-white transition hover:bg-[#0a3f6d] md:px-4 md:py-2 md:text-sm"
+                          >
+                            <FaDownload className="h-4 w-3" />
+                            Download GA
+                          </a>
+                        )}
+                      </div>
+
+                      <aside className="w-full space-y-2 lg:w-[78%] xl:w-2/3">
+                        {specifications.map(([label, value], index) => (
+                          <div key={label}>
+                            <div className="flex justify-between gap-6">
+                              <p className="w-2/3">{label}</p>
+                              <span className="w-1/3">{value}</span>
+                            </div>
+                            {(index + 1) % 2 === 0 && (
+                              <hr className="my-1.5 border-dashed" />
+                            )}
+                          </div>
+                        ))}
+                      </aside>
                     </div>
 
-                    {/* Specifications */}
-                    <aside className="w-full lg:w-2/4 space-y-2">
-                      {[
-                        ["LOA", fleetData.loa],
-                        ["Breadth", fleetData.breadth],
-                        ["Free deck", fleetData.freedeck],
-                        ["Depth", fleetData.depth],
-                        ["Draft", fleetData.draft],
-                        ["Deadweight", fleetData.deadweight],
-                        ["Speed", fleetData.speed],
-                        ["Propulsion", fleetData.propulsion],
-                        ["Ballast capacity", fleetData.ballastcapacity],
-                      ].map(([label, value], index) => (
-                        <div key={label}>
-                          <div className="flex justify-between">
-                            <p className="w-2/3">{label}</p>
-                            <span className="w-1/3">{value}</span>
-                          </div>
-                          {(index + 1) % 2 === 0 && (
-                            <hr className="border-dashed my-1.5" />
-                          )}
-                        </div>
-                      ))}
-                    </aside>
+                    <FleetDescription className="hidden space-y-4 text-justify font-medium lg:col-span-2 lg:block lg:self-start lg:pt-1" />
                   </div>
 
-                  {/* Vessel Image */}
                   {fleetData.image && (
                     <div className="relative">
                       <Image
@@ -178,29 +145,14 @@ export const FleetPage = () => {
                         alt={fleetData.name || "Fleet image"}
                         width={1800}
                         height={1000}
-                        className="relative z-10 w-full h-auto object-cover 
-                 [filter:drop-shadow(0_24px_36px_rgba(0,0,0,0.35))]"
+                        className="relative z-10 h-auto w-full object-cover [filter:drop-shadow(0_24px_36px_rgba(0,0,0,0.35))]"
                         loading="eager"
                       />
                     </div>
                   )}
                 </motion.div>
 
-                {/* 🔄 Carousel now changes with active tab */}
-                
-                <MultipleSlideCarousel
-                  key={fleetData.id}
-                  fleetData={fleetData}
-                />
-                
-                {/* {fleetData?.fleetProjects && fleetData?.fleetProjects.length > 0 && (
-                <MultipleSlideCarousel
-                 key={fleetData.id}
-                 fleetData={fleetData}
-                 />
-                )} */}
-
-
+                <MultipleSlideCarousel key={fleetData.id} fleetData={fleetData} />
               </TabsContent>
             );
           })}
