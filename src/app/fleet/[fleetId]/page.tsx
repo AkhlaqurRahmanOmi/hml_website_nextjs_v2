@@ -27,7 +27,7 @@ export default async function Page({ params }: { params: Promise<{ fleetId: stri
   }
 
   return (
-    <section className="relative min-h-screen flex flex-col p-4 px-4 md:px-[5%] py-16">
+    <section className="relative min-h-screen flex flex-col p-4 px-4 md:px-[5%] py-20 md:py-16">
       <style>{`
         .wave {
             animation: waveAnimation 2s infinite ease-in-out;

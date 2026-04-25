@@ -42,10 +42,10 @@ export const HomeHero = () => {
           variants={container}
         >
           <motion.h1 className="w-full max-w-full" variants={container}>
-            <div className="px-3  md:px-[5%] mx-auto w-fit text-left">
+            <div className="px-3 mb-28  md:mb-1 md:px-[5%] mx-auto w-fit text-left">
 
               <motion.span
-                className="text-4xl font-bold text-white block text-left mb-2"
+                className="text-2xl md:text-4xl  lg:text-4xl font-bold text-white block text-left mb-2"
                 style={{ textShadow: "3px 3px 6px rgba(0, 0, 0, 0.7)" }}
                 variants={fadeUp}
               >
@@ -53,7 +53,7 @@ export const HomeHero = () => {
               </motion.span>
 
               <motion.span
-                className="font-worksans text-4xl md:text-4xl lg:text-7xl font-bold text-white md:font-normal lg:font-bold text-transparent block text-left -mt-2 lg:-mt-5 lg:-ml-0.5"
+                className="font-worksans text-2xl md:text-4xl lg:text-7xl font-bold text-white md:font-normal lg:font-bold text-transparent block text-left md:-mt-2 lg:-mt-5 lg:-ml-0.5"
                 style={{
                   // WebkitTextStroke: "1px white",
                   textShadow: "3px 3px 8px rgba(0, 0, 0, 0.7)",
@@ -71,7 +71,7 @@ export const HomeHero = () => {
         </motion.div>
 
         {/* HeroHomeStats */}
-        <div className="absolute bottom-0 left-0 right-0 px-3 md:px-[5%] pb-0 flex flex-col gap-3 lg:flex-row items-center justify-center lg:justify-between w-full">
+        <div className="absolute bottom-6 md:bottom-0 left-0 right-0 px-3 md:px-[5%] pb-0 flex flex-col gap-3 lg:flex-row items-center justify-center lg:justify-between w-full">
           {
             HeroHomeStats.map((stat, index) => (
               <div key={index}

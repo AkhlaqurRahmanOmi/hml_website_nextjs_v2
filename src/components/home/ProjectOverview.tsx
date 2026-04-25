@@ -190,7 +190,7 @@ export const HomeProjectOverview = () => {
 
   return (
     <section id="project-overview" className="min-h-screen flex flex-col justify-center relative">
-      <div className="px-4 md:px-[3%] flex gap-4 md:flex-row justify-between items-center mt-[10vh]">
+      {/* <div className="px-4 md:px-[3%] flex gap-4 md:flex-row justify-between items-center mt-[10vh]">
         <h1 className="mb-2">
           <span
             className="font-roboto text-2xl md:text-3xl 2xl:text-5xl font-bold text-[#094d82] block text-start uppercase"
@@ -234,7 +234,54 @@ export const HomeProjectOverview = () => {
             })}
           </div>
         </div>
-      </div>
+      </div> */}
+     <div className="px-4 md:px-[3%] flex flex-col md:flex-row justify-between items-start md:items-center  md:mt-[10vh]  md:gap-4">
+  <h1 className="mb-2">
+    <span
+      className="font-roboto text-xl md:text-3xl 2xl:text-5xl font-bold text-[#094d82] block text-start uppercase"
+      style={{ textShadow: "2px 2px 2px rgba(0,0,0,0.5)" }}
+    >
+      PROJECTS
+    </span>
+    <span
+      className="font-roboto text-3xl md:text-5xl 2xl:text-7xl font-bold text-[#094d82] block text-start uppercase"
+      style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.7)" }}
+    >
+      OVERVIEW
+    </span>
+  </h1>
+
+  <div className="overflow-x-auto py-10 w-full md:w-1/2 scrollbar-hide">
+    <div className="relative inline-flex items-start gap-2 px-4">
+      <div className="absolute top-10 md:top-11 left-[calc(2rem+2rem)] right-[calc(2rem+2rem)] h-0.5 bg-[#094d82] z-0" />
+      {TIMELINE.map((year) => {
+        const isActive = activeYear === Number(year);
+        return (
+          <div key={year} className="relative z-10 flex flex-col items-center text-center w-20 shrink-0">
+            <div
+              onClick={() => scrollToYear(year)}
+              className={`h-5 md:h-6 mb-2 flex items-center justify-center font-semibold cursor-pointer select-none transition-all ${
+                isActive ? "text-[#094d82] text-base md:text-lg" : "text-[#094d82] text-sm md:text-base"
+              }`}
+              aria-label={`Jump to projects from ${year}`}
+              title={`Jump to ${year}`}
+            >
+              {year}
+            </div>
+            <div className="h-6 flex items-center justify-center">
+              <div
+                onClick={() => scrollToYear(year)}
+                className={`relative rounded-full border-2 border-[#094d82] shadow-md cursor-pointer transition-all ${
+                  isActive ? "bg-[#094d82] w-5 h-5 outline outline-2 outline-[#094d82] outline-offset-2" : "bg-white w-4 h-4"
+                }`}
+              />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</div>
 
       {canScrollLeft && (
         <button

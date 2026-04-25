@@ -59,8 +59,8 @@ const LatestNews = () => {
   return (
     <section id={HOME_LATEST_NEWS_SECTION} className="font-helveticaneue">
       <div className="mx-auto w-[95%] px-4 py-10 pt-24 sm:px-6 sm:pt-28 lg:px-8 lg:pt-32 lg:pb-12">
-        <div className="flex items-start justify-between">
-          <h1 className="text-3xl font-black tracking-wide text-[#094d82] uppercase sm:text-4xl">
+        {/* <div className="block md:flex items-start justify-between ">
+          <h1 className="text-2xl md:text-3xl font-black tracking-wide text-[#094d82] uppercase ">
             LATEST NEWS
           </h1>
 
@@ -93,7 +93,44 @@ const LatestNews = () => {
               MONTH
             </button>
           </div>
-        </div>
+        </div> */}
+        <div className="block md:flex items-start justify-between">
+  {/* Heading: বড় স্ক্রিনে যেমন ছিল তেমনই থাকবে */}
+  <h1 className="text-2xl md:text-3xl font-black tracking-wide text-[#094d82] uppercase">
+    LATEST NEWS
+  </h1>
+
+  
+  <div className="flex items-center justify-end md:justify-start gap-5 text-xs font-semibold text-[#7a8ea3] mt-6  md:mt-0">
+    <button
+      type="button"
+      onClick={() => setView("list")}
+      className={`flex items-center gap-2 transition-colors ${view === "list" ? "text-[#0b4b73]" : ""}`}
+      aria-pressed={view === "list"}
+    >
+      <span className="inline-flex h-4 w-4 flex-col justify-between">
+        <span className="block h-[2px] bg-current" />
+        <span className="block h-[2px] bg-current" />
+        <span className="block h-[2px] bg-current" />
+      </span>
+      LIST
+    </button>
+    <button
+      type="button"
+      onClick={() => setView("month")}
+      className={`flex items-center gap-2 transition-colors ${view === "month" ? "text-[#0b4b73]" : ""}`}
+      aria-pressed={view === "month"}
+    >
+      <span className="grid h-4 w-4 grid-cols-2 gap-[2px]">
+        <span className="block h-[5px] w-[5px] bg-current" />
+        <span className="block h-[5px] w-[5px] bg-current" />
+        <span className="block h-[5px] w-[5px] bg-current" />
+        <span className="block h-[5px] w-[5px] bg-current" />
+      </span>
+      MONTH
+    </button>
+  </div>
+</div>
 
         <div className="relative mt-6 border border-slate-200 border-l-0 bg-white p-2">
           <div className="pointer-events-none absolute inset-0 bg-[url('/images/world-map-dots.jpeg')] bg-center bg-no-repeat opacity-80 [background-size:115%_115%]" />

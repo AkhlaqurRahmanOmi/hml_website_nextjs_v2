@@ -122,14 +122,14 @@ export const MediaHero = () => {
         loading="lazy"
       />
 
-      <div className="relative z-10 flex w-full flex-col items-start justify-between gap-6 px-4 py-24 md:px-10 lg:px-16">
+      <div className="relative z-10 flex w-full flex-col items-start justify-between gap-6 px-4  pt-24 pb-3 md:pb-24 md:pt-24 md:px-10 lg:px-16">
         <motion.div
           className="w-full font-opensans"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="mb-2 mt-2 xl:mt-10">
+          <h1 className="mb-0 md:mb-2 mt-3 md:mt-2 xl:mt-10">
             <span className="text-2xl md:text-4xl lg:text-6xl font-semibold text-[#094d82] leading-tight text-nowrap">
               DISCOVER MORE <span className="font-extrabold">ABOUT US</span>
             </span>

@@ -14,7 +14,7 @@ export const CompnayHistory = () => {
             <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-24 md:pt-28 lg:pt-32 pb-10">
                 <div className="flex flex-col lg:flex-row gap-6 lg:gap-10" data-aos="fade-down" data-aos-delay="200">
                     <div className="text-black/70 lg:sticky lg:top-28 lg:self-start lg:max-w-xl">
-                        <h2 className="text-2xl md:text-4xl font-medium uppercase">
+                        <h2 className="text-xl md:text-4xl font-medium uppercase">
                             COMPANY
                         </h2>
                         <h1 className="text-4xl md:text-6xl font-semibold uppercase ">

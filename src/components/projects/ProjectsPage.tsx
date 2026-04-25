@@ -60,44 +60,42 @@ export default function ProjectsPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <section className="relative h-[260px] sm:h-[320px] lg:h-[420px] w-full overflow-hidden">
-        <HeroVideoWithFallback
-          mp4Url="https://res.cloudinary.com/dl28pqkb2/video/upload/v1768200888/Final_final_final_fw7rve.mp4"
-          webmUrl="https://res.cloudinary.com/dl28pqkb2/video/upload/v1768200888/Final_final_final_fw7rve.mp4"
-          posterImage="https://res.cloudinary.com/dl28pqkb2/image/upload/v1768202874/project_background_gzenbk.jpg"
-          className=""
-          overlayClassName="bg-[#0b2f4a]/35"
-        />
-        {/* Overlay Content */}
-        <div className="absolute inset-0 z-20 flex flex-col items-start justify-between mt-24 xl:mt-32">
-          <div className="w-full bg-[#094e8286] p-6 xl:mt-[2%]">
-            <div className="max-w-[100rem] px-0 md:px-[5%] text-center">
-              <h1 className="mb-4 font-dmsans">
-                <span className="block text-start text-2xl font-bold uppercase text-white drop-shadow-[0_1px_1px_rgba(255,255,255,0.15)] lg:text-3xl">
-                  OUR
-                </span>
-                <span className="block text-start text-3xl font-bold text-transparent text-white md:text-4xl lg:text-5xl md:font-normal lg:font-bold">
-                  PROJECTS
-                </span>
-              </h1>
+      <section className="relative h-[350px] sm:h-[320px] lg:h-[420px] w-full overflow-hidden">
+  <HeroVideoWithFallback
+    mp4Url="https://res.cloudinary.com/dl28pqkb2/video/upload/v1768200888/Final_final_final_fw7rve.mp4"
+    webmUrl="https://res.cloudinary.com/dl28pqkb2/video/upload/v1768200888/Final_final_final_fw7rve.mp4"
+    posterImage="https://res.cloudinary.com/dl28pqkb2/image/upload/v1768202874/project_background_gzenbk.jpg"
+    className=""
+    overlayClassName="bg-[#0b2f4a]/35"
+  />
+  
+  <div className="absolute inset-0 z-20 flex flex-col items-start justify-center md:justify-between pt-20 md:pt-0 md:mt-24 xl:mt-32">
+    <div className="w-full bg-[#094e8286] p-4 md:p-6 xl:mt-[2%]">
+      <div className="max-w-[100rem] px-4 md:px-[5%] text-center">
+        <h1 className="mb-2 md:mb-4 font-dmsans">
+          <span className="block text-start text-xl md:text-2xl font-bold uppercase text-white drop-shadow-[0_1px_1px_rgba(255,255,255,0.15)] lg:text-3xl">
+            OUR
+          </span>
+          <span className="block text-start text-2xl  font-bold text-white md:text-4xl lg:text-5xl md:font-normal lg:font-bold">
+            PROJECTS
+          </span>
+        </h1>
 
-              <div className="space-y-6 text-[#094d82]">
-                <p className="w-full text-justify text-sm text-white">
-                  HML specializes in transporting large-scale, heavy, and
-                  high-value cargo for one of the world’s most demanding
-                  industries. Our vessels are specially designed to serve
-                  projects in industries like shipbuilding, renewable energy,
-                  oil and gas, port equipment, heavy machinery, and civil
-                  construction. With accuracy, dependability and worldwide
-                  reach, we provide customized transportation solutions for
-                  everything from offshore structures and industrial modules to
-                  large components and infrastructure equipment.
-                </p>
-              </div>
-            </div>
-          </div>
-          </div>
-      </section>
+        <div className="space-y-6 text-[#094d82]">
+          <p className="w-full text-justify text-[12px] leading-relaxed md:text-sm text-white">
+            HML specializes in transporting large-scale, heavy, and
+            high-value cargo for one of the world’s most demanding
+            industries. Our vessels are specially designed to serve
+            projects in industries like shipbuilding, renewable energy,
+            oil and gas, port equipment, heavy machinery, and civil
+            construction. With accuracy, dependability and worldwide
+            reach.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <section className="bg-[#f4f6f9]">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10 lg:py-14">

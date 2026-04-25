@@ -71,8 +71,8 @@ export default async function Page({
             <h2 className="text-lg font-semibold mb-3">Project Story:</h2>
           </div>
 
-            <div className="flex justify-between">
-              <div  className="flex justify-between gap-10">
+            {/* <div className="flex justify-between">
+              <div  className="flex flex-col md:flex-row justify-between gap-6 md:gap-10">
                 <p className="text-sm leading-relaxed w-1/2 text-white/90 whitespace-pre-line">
                   {projectData.projectDetails}
                 </p>
@@ -86,7 +86,29 @@ export default async function Page({
                   ))}
                 </div>
               </div>
-            </div>
+            </div> */}
+            
+            <div className="flex justify-between">
+   
+    <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-10">
+        
+    
+        <p className="text-sm leading-relaxed w-full md:w-1/2 text-white/90 whitespace-pre-line">
+            {projectData.projectDetails}
+        </p>
+
+  
+        <div className="space-y-3 text-sm w-full md:w-1/2">
+            {metaItems.map((item) => (
+                <div key={item.label} className="flex gap-2">
+                    <span className="font-semibold w-20 shrink-0">{item.label}:</span>
+                    <span className="text-white/90">{item.value}</span>
+                </div>
+            ))}
+        </div>
+        
+    </div>
+</div>
         </div>
       </section>
       <Footer />

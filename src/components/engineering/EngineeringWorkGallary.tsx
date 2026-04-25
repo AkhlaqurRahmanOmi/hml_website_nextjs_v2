@@ -10,10 +10,10 @@ export const EngineeringWorkGallary = () => {
 
     return (
         <section className="w-full h-screen overflow-hidden flex flex-col">
-            <div className="h-[60px] md:h-0" /> {/* spacer equal to navbar height */}
+            <div className="h-0" /> {/* spacer equal to navbar height */}
 
             {/* Top Row (2 cards) - takes 50% height */}
-            <div className="flex flex-1 transition-all duration-500 overflow-hidden mt-20">
+            <div className="flex flex-1 transition-all duration-500 overflow-hidden mt-16 md:mt-20">
                 {EngineeringCapabilityData.slice(0, 2).map((item, index) => {
                     const isHovered = hoveredTop === index;
                     const showDetails =

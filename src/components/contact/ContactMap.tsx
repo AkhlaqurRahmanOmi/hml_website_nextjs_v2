@@ -21,14 +21,14 @@ export const ContactMap = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 via-blue-500/50 to-transparent z-10" />
 
                 {/* Overlay content */}
-                <div className="relative z-10 flex flex-col lg:flex-row items-start justify-between h-full w-full px-4 md:px-10 lg:px-16 xl:px-24 py-24">
+                <div className="relative z-10 flex flex-col lg:flex-row items-start justify-between h-full w-full px-4 md:px-10 lg:px-16 xl:px-24 py-12 md:py-24">
                     {/* Left content */}
                     <div className="w-full lg:w-1/2 flex 2xl:justify-center md:items-center my-5 md:my-auto">
                         <h1 className="font-roboto flex lg:flex-col gap-2 ">
-                            <span className="text-5xl font-bold text-white uppercase">
+                            <span className="text-4xl md:text-5xl font-bold text-white uppercase">
                                 CONTACT
                             </span>
-                            <span className="text-5xl lg:text-6xl font-bold text-white uppercase">
+                            <span className="text-4xl lg:text-6xl font-bold text-white uppercase">
                                 US
                             </span>
                         </h1>

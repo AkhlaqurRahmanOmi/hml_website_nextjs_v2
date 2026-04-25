@@ -57,7 +57,7 @@ export const HomeFleetOverview = () => {
           <div className="w-full max-w-full px-4 md:px-[5%] text-center">
             <h1 className="mb-8 mt-28">
               <span
-                className="font-roboto text-4xl lg:text-5xl text-white block text-start uppercase"
+                className="font-roboto text-2xl lg:text-5xl text-white block text-start uppercase"
                 style={{
                   textShadow:
                     "2px 2px 2px rgba(0, 0, 0, 1), 4px 4px 6px rgba(0, 0, 0, 0.85)",
@@ -66,7 +66,7 @@ export const HomeFleetOverview = () => {
                 Fleet
               </span>
               <span
-                className="font-roboto text-6xl lg:text-7xl text-white block text-start uppercase"
+                className="font-roboto text-4xl lg:text-7xl text-white block text-start uppercase"
                 style={{
                   textShadow:
                     "2px 2px 2px rgba(0, 0, 0, 1), 4px 4px 8px rgba(0, 0, 0, 0.85)",
