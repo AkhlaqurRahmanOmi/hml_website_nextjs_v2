@@ -2,7 +2,7 @@
 
 import { HomeProject } from "@/data/project";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -16,7 +16,7 @@ import {
 type Project = {
   id: string | number;
   name: string;
-  image?: string;
+  image?: string | StaticImageData;
   description?: string;
   projectDetails?: string;
   client?: string;
@@ -35,8 +35,6 @@ type Project = {
   createdAt?: string | number | Date;
   updatedAt?: string | number | Date;
 };
-
-const TIMELINE = ["2025", "2024", "2023", "2022", "2021", "2019", "2018", "2016", "2012"] as const;
 
 const extractYear = (v: unknown): number | undefined => {
   if (v == null) return undefined;
@@ -89,7 +87,6 @@ export const HomeProjectOverview = () => {
 
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const [activeYear, setActiveYear] = useState<number>(2025);
 
   const availableYearsAsc = useMemo(() => {
     const set = new Set<number>();
@@ -98,6 +95,15 @@ export const HomeProjectOverview = () => {
     });
     return Array.from(set).sort((a, b) => a - b);
   }, [projects]);
+
+  const timelineYears = useMemo(
+    () => [...availableYearsAsc].sort((a, b) => b - a).map(String),
+    [availableYearsAsc]
+  );
+
+  const [activeYear, setActiveYear] = useState<number>(
+    () => Number(timelineYears[0] ?? new Date().getFullYear())
+  );
 
   const yearToFirstIndex = useMemo(() => {
     const map: Record<number, number> = {};
@@ -254,7 +260,7 @@ export const HomeProjectOverview = () => {
   <div className="overflow-x-auto py-10 w-full md:w-1/2 scrollbar-hide">
     <div className="relative inline-flex items-start gap-2 px-4">
       <div className="absolute top-10 md:top-11 left-[calc(2rem+2rem)] right-[calc(2rem+2rem)] h-0.5 bg-[#094d82] z-0" />
-      {TIMELINE.map((year) => {
+      {timelineYears.map((year) => {
         const isActive = activeYear === Number(year);
         return (
           <div key={year} className="relative z-10 flex flex-col items-center text-center w-20 shrink-0">

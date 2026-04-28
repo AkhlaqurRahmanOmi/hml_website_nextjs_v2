@@ -7,7 +7,7 @@ import { Footer } from "../Global/footer";
 import HeroVideoWithFallback from "@/utils/HeroVideoWithFallback";
 import { useMemo, useState } from "react";
 
-const projects = HomeProject.slice(0, 8).map((project) => {
+const projects = HomeProject.map((project) => {
   const base =
     project.description?.trim() ||
     project.projectDetails?.split("\n")[0]?.trim() ||

@@ -16,8 +16,8 @@ export default async function NewsEventDetailPage({ params }: { params: Promise<
   if (!event) return notFound();
 
   return (
-    <main className="min-h-screen bg-white">
-      <section className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10 pt-24 sm:pt-28 lg:pt-32 lg:pb-12 font-helveticaneue">
+    <main className="flex min-h-screen flex-col bg-white">
+      <section className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 pt-24 font-helveticaneue sm:px-6 sm:pt-28 lg:px-8 lg:pb-12 lg:pt-32">
         <div className="flex items-start justify-between">
           <h1 className="text-3xl sm:text-4xl font-black tracking-wide text-[#094d82] uppercase">
             LATEST NEWS

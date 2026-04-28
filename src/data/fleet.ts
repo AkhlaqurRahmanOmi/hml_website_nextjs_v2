@@ -53,18 +53,22 @@ export const FleetData = [
             {
                 projectName: "SHI",
                 image: shi,
+                projectId: "11",
             },
             {
                 projectName: "Gina Krog",
                 image: ginaKrog,
+                projectId: "14",
             },
             {
                 projectName: "East Anglia",
                 image: eastAnglia,
+                projectId: "10",
             },
             {
                 projectName: "Gordon LNG Project",
                 image: GordonLNGProject,
+                projectId: "16",
             },
             // {
             //     projectName: "Gordon LNG Project",
@@ -93,34 +97,42 @@ export const FleetData = [
             {
                 projectName: "Linde Project",
                 image: lindeProject,
+                projectId: "8",
             },
             {
                 projectName: "DEME CVOW Project",
                 image: demecvowProject,
+                projectId: "3",
             },
             {
                 projectName: "Gallaf 1 Project",
                 image: galaf1Project,
+                projectId: "9",
             },
             {
                 projectName: "Gallaf 3",
                 image: galaf3Project,
+                projectId: "5",
             },
             {
                 projectName: "Marjan Project GCP",
                 image: marjanProjectGCP,
+                projectId: "6",
             },
             {
                 projectName: "Marjan Project ACC",
                 image: marjanProjectACC,
+                projectId: "6",
             },
             {
                 projectName: "RTG Transportation",
                 image: RTGTransportaion,
+                projectId: "7",
             },
             {
                 projectName: "P78 Project",
                 image: P78Project,
+                projectId: "4",
             },
             {
                 projectName: "Indonesia G-Crane project",
@@ -129,10 +141,12 @@ export const FleetData = [
             {
                 projectName: "Caisson Leg Extensions Project",
                 image: caissonLegExtensions,
+                projectId: "12",
             },
             {
                 projectName: "FPSO Modules P-66/P-49",
                 image: fpsoModulesProject,
+                projectId: "13",
             },
         ],
     },
@@ -161,14 +175,17 @@ export const FleetData = [
             {
                 projectName: "SHI Project",
                 image: shiMegaTrust,
+                projectId: "11",
             },
             {
                 projectName: "Caisson Leg Extensions Project",
                 image: caissonLegExtensions,
+                projectId: "12",
             },
             {
                 projectName: "FPSO Modules P-66/P-49",
                 image: fpsoModulesProject,
+                projectId: "13",
             }
         ],
     },
@@ -197,6 +214,7 @@ export const FleetData = [
             {
                 projectName: "Wheatstone Steel Gravity Project",
                 image: steelGravityProject,
+                projectId: "15",
             },
             {
                 projectName: "Floating Dock Project",
@@ -209,6 +227,7 @@ export const FleetData = [
             {
                 projectName: "GIGA/MEGA Shipblocks Project",
                 image: GIGAMEGAShipblocksProject,
+                projectId: "11",
             },
         ],
     },

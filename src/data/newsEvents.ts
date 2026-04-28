@@ -4,6 +4,7 @@ import kobc2 from "@/assets/event_news/kobc/3.jpg";
 import kobc3 from "@/assets/event_news/kobc/6.jpg";
 import cydf1 from "@/assets/event_news/cydf/1.jpeg";
 import ani_17th1 from "@/assets/event_news/17th_ani/1.jpeg";
+import projectsigningWithNb from "../../public/images/webp/NB.png";
 
 export type NewsEvent = {
   id: string;
@@ -42,7 +43,7 @@ export const newsEvents: NewsEvent[] = [
     id: "hug-megaline",
     title: "Contract Signing of the New Building: The Launch of HUG Megaline",
     subtitle: "Hi-Megaline Expands Global Maritime Competitiveness",
-    image: "",
+    images: [projectsigningWithNb],
     date: { month: "MAR", day: "15" },
     body: 'Hi-Megaline is proud to announce the establishment of its fourth subsidiary, HUG Megaline, and the upcoming contract signing for a new building vessel to further strengthen our global maritime competitiveness. Representing our core values, the name HUG stands for "Happy through Unique Grit," embodying our commitment to achieving collective happiness through the distinctive perseverance that defines Hi-Megaline.\n\nCurrently in the final stages of incorporation, HUG-Megaline will serve as a strategic cornerstone for our fleet expansion, ensuring that we continue to deliver excellence and navigate the future of heavy-lift shipping with unmatched grit and innovation.',
   },
