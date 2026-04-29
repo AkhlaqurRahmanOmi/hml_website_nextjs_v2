@@ -60,48 +60,48 @@ export default function ProjectsPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <section className="relative h-[350px] sm:h-[320px] lg:h-[420px] w-full overflow-hidden">
-  <HeroVideoWithFallback
-    mp4Url="https://res.cloudinary.com/dl28pqkb2/video/upload/v1768200888/Final_final_final_fw7rve.mp4"
-    webmUrl="https://res.cloudinary.com/dl28pqkb2/video/upload/v1768200888/Final_final_final_fw7rve.mp4"
-    posterImage="https://res.cloudinary.com/dl28pqkb2/image/upload/v1768202874/project_background_gzenbk.jpg"
-    className=""
-    overlayClassName="bg-[#0b2f4a]/35"
-  />
-  
-  <div className="absolute inset-0 z-20 flex flex-col items-start justify-center md:justify-between pt-20 md:pt-0 md:mt-24 xl:mt-32">
-    <div className="w-full bg-[#094e8286] p-4 md:p-6 xl:mt-[2%]">
-      <div className="max-w-[100rem] px-4 md:px-[5%] text-center">
-        <h1 className="mb-2 md:mb-4 font-dmsans">
-          <span className="block text-start text-xl md:text-2xl font-bold uppercase text-white drop-shadow-[0_1px_1px_rgba(255,255,255,0.15)] lg:text-3xl">
-            OUR
-          </span>
-          <span className="block text-start text-2xl  font-bold text-white md:text-4xl lg:text-5xl md:font-normal lg:font-bold">
-            PROJECTS
-          </span>
-        </h1>
+      <section className="relative h-[54.6875vh] sm:h-[50vh] lg:h-[52.5vh] w-full overflow-hidden">
+        <HeroVideoWithFallback
+          mp4Url="https://res.cloudinary.com/dl28pqkb2/video/upload/v1768200888/Final_final_final_fw7rve.mp4"
+          webmUrl="https://res.cloudinary.com/dl28pqkb2/video/upload/v1768200888/Final_final_final_fw7rve.mp4"
+          posterImage="https://res.cloudinary.com/dl28pqkb2/image/upload/v1768202874/project_background_gzenbk.jpg"
+          className=""
+          overlayClassName="bg-[#0b2f4a]/35"
+        />
 
-        <div className="space-y-6 text-[#094d82]">
-          <p className="w-full text-justify text-[12px] leading-relaxed md:text-sm text-white">
-            HML specializes in transporting large-scale, heavy, and
-            high-value cargo for one of the world’s most demanding
-            industries. Our vessels are specially designed to serve
-            projects in industries like shipbuilding, renewable energy,
-            oil and gas, port equipment, heavy machinery, and civil
-            construction. With accuracy, dependability and worldwide
-            reach.
-          </p>
+        <div className="absolute inset-0 z-20 flex flex-col items-start justify-center pt-[5rem] md:mt-[6rem] md:justify-between md:pt-0 xl:mt-[8rem]">
+          <div className="flex h-1/2 w-full items-center bg-[#094e8286] p-[1rem] md:p-[1.5rem] xl:mt-[2%]">
+            <div className="mx-auto w-[90%] max-w-[100rem] text-center">
+              <h1 className="mb-[0.5rem] font-dmsans md:mb-[1rem]">
+                <span className="block text-start text-[1.25rem] font-bold uppercase text-white drop-shadow-[0_0.0625rem_0.0625rem_rgba(255,255,255,0.15)] md:text-[1.5rem] lg:text-[1.875rem]">
+                  OUR
+                </span>
+                <span className="block text-start text-[1.5rem] font-bold text-white md:text-[2.25rem] md:font-normal lg:text-[3rem] lg:font-bold">
+                  PROJECTS
+                </span>
+              </h1>
+
+              <div className="space-y-[1.5rem] text-[#094d82]">
+                <p className="w-full text-justify text-[0.75rem] leading-[1.625] text-white md:text-[0.875rem]">
+                  HML specializes in transporting large-scale, heavy, and
+                  high-value cargo for one of the world’s most demanding
+                  industries. Our vessels are specially designed to serve
+                  projects in industries like shipbuilding, renewable energy,
+                  oil and gas, port equipment, heavy machinery, and civil
+                  construction. With accuracy, dependability and worldwide
+                  reach.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       <section className="bg-[#f4f6f9]">
-        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
-          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div className="w-full sm:w-1/2">
-              <label className="block text-xs font-semibold text-[#52677a] mb-2">
+        <div className="mx-auto w-full max-w-[72rem] px-[1rem] py-[2.5rem] sm:px-[1.5rem] lg:px-[2rem] lg:py-[3.5rem]">
+          <div className="mb-[1.5rem] flex flex-col gap-[1rem] sm:flex-row sm:items-end sm:justify-between">
+            <div className="w-full sm:w-[50%]">
+              <label className="mb-[0.5rem] block text-[0.75rem] font-semibold text-[#52677a]">
                 Search
               </label>
               <input
@@ -109,19 +109,19 @@ export default function ProjectsPage() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search projects"
-                className="w-full rounded-md border border-slate-200 bg-white px-4 py-2 text-sm text-[#2b3f52] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#094d82]/20"
+                className="w-full rounded-[0.375rem] border-[0.0625rem] border-slate-200 bg-white px-[1rem] py-[0.5rem] text-[0.875rem] text-[#2b3f52] shadow-[0_0.0625rem_0.125rem_0_rgb(0_0_0_/_0.05)] focus:outline-none focus:ring-[0.125rem] focus:ring-[#094d82]/20"
               />
             </div>
 
-            <div className="flex w-full sm:w-auto gap-4">
+            <div className="flex w-full gap-[1rem] sm:w-auto">
               <div>
-                <label className="block text-xs font-semibold text-[#52677a] mb-2">
+                <label className="mb-[0.5rem] block text-[0.75rem] font-semibold text-[#52677a]">
                   Year
                 </label>
                 <select
                   value={yearFilter}
                   onChange={(e) => setYearFilter(e.target.value)}
-                  className="min-w-[140px] rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-[#2b3f52] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#094d82]/20"
+                  className="min-w-[8.75rem] rounded-[0.375rem] border-[0.0625rem] border-slate-200 bg-white px-[0.75rem] py-[0.5rem] text-[0.875rem] text-[#2b3f52] shadow-[0_0.0625rem_0.125rem_0_rgb(0_0_0_/_0.05)] focus:outline-none focus:ring-[0.125rem] focus:ring-[#094d82]/20"
                 >
                   {availableYears.map((y) => (
                     <option key={y} value={y}>
@@ -132,13 +132,13 @@ export default function ProjectsPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#52677a] mb-2">
+                <label className="mb-[0.5rem] block text-[0.75rem] font-semibold text-[#52677a]">
                   Cargo
                 </label>
                 <select
                   value={cargoFilter}
                   onChange={(e) => setCargoFilter(e.target.value)}
-                  className="min-w-[180px] rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-[#2b3f52] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#094d82]/20"
+                  className="min-w-[11.25rem] rounded-[0.375rem] border-[0.0625rem] border-slate-200 bg-white px-[0.75rem] py-[0.5rem] text-[0.875rem] text-[#2b3f52] shadow-[0_0.0625rem_0.125rem_0_rgb(0_0_0_/_0.05)] focus:outline-none focus:ring-[0.125rem] focus:ring-[#094d82]/20"
                 >
                   {availableCargo.map((c) => (
                     <option key={c} value={c}>
@@ -150,31 +150,31 @@ export default function ProjectsPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 gap-[1.5rem] sm:grid-cols-2 lg:grid-cols-3 lg:gap-[2rem]">
             {filteredProjects.map((project) => (
               <article
                 key={project.id}
-                className="bg-white border border-slate-200 shadow-sm"
+                className="border-[0.0625rem] border-slate-200 bg-white shadow-[0_0.0625rem_0.125rem_0_rgb(0_0_0_/_0.05)]"
               >
                 <div className="relative aspect-[16/10] w-full overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.name}
                     fill
-                    sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+                    sizes="(min-width: 64rem) 33vw, (min-width: 40rem) 50vw, 100vw"
                     className="object-cover"
                   />
                 </div>
-                <div className="p-5 text-center">
-                  <h3 className="text-base font-bold text-[#094d82]">
+                <div className="p-[1.25rem] text-center">
+                  <h3 className="text-[1rem] font-bold text-[#094d82]">
                     {project.name}
                   </h3>
-                  <p className="mt-2 text-sm text-[#52677a]">
+                  <p className="mt-[0.5rem] text-[0.875rem] text-[#52677a]">
                     {project.summary}
                   </p>
                   <Link
                     href={`/projects/${project.id}`}
-                    className="inline-flex items-center mt-4 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white bg-[#094d82] hover:bg-[#0e3d61] transition-colors"
+                    className="mt-[1rem] inline-flex items-center bg-[#094d82] px-[1rem] py-[0.5rem] text-[0.75rem] font-semibold uppercase tracking-[0.025em] text-white transition-colors hover:bg-[#0e3d61]"
                   >
                     Read more
                   </Link>

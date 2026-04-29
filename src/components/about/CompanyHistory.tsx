@@ -10,8 +10,8 @@ export const CompnayHistory = () => {
 
 
     return (
-        <section className="relative min-h-screen bg-gradient-to-b from-white via-[#85bef3] to-[#4e697e]">
-            <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-24 md:pt-28 lg:pt-32 pb-10">
+        <section className="relative flex min-h-screen flex-col bg-gradient-to-b from-white via-[#85bef3] to-[#4e697e]">
+            <div className="relative z-10 mx-auto w-full max-w-7xl flex-1 px-4 pb-10 pt-24 sm:px-6 md:pt-28 lg:px-10 lg:pt-32">
                 <div className="flex flex-col lg:flex-row gap-6 lg:gap-10" data-aos="fade-down" data-aos-delay="200">
                     <div className="text-black/70 lg:sticky lg:top-28 lg:self-start lg:max-w-xl">
                         <h2 className="text-xl md:text-4xl font-medium uppercase">

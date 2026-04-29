@@ -49,12 +49,12 @@ export default function NewsEventsPage() {
   return (
     <main className="min-h-screen bg-white">
       <section className="mx-auto w-[95%] min-h-screen px-4 sm:px-6 lg:px-8 py-10 pt-24 sm:pt-28 lg:pt-32 lg:pb-12 font-helveticaneue">
-        {/* <div className="flex items-start justify-between">
+        <div className="flex flex-col md:flex-row items-start justify-between mt-[3%]">
           <h1 className="text-3xl sm:text-4xl font-black tracking-wide text-[#094d82] uppercase mt-[3%]">
             LATEST NEWS
           </h1>
 
-          <div className="flex items-center gap-6 text-[#7a8ea3] text-xs font-semibold">
+          <div className="flex items-center justify-end md:justify-start gap-6 text-[#7a8ea3] text-xs font-semibold w-full md:w-auto mt-[3%]">
             <button
               type="button"
               onClick={() => setView("list")}
@@ -83,42 +83,7 @@ export default function NewsEventsPage() {
               MONTH
             </button>
           </div>
-        </div> */}
-        <div className="flex flex-col md:flex-row items-start justify-between">
-  <h1 className="text-3xl sm:text-4xl font-black tracking-wide text-[#094d82] uppercase mt-[3%]">
-    LATEST NEWS
-  </h1>
-
-  <div className="flex items-center justify-end md:justify-start gap-6 text-[#7a8ea3] text-xs font-semibold w-full md:w-auto mt-4 md:mt-0">
-    <button
-      type="button"
-      onClick={() => setView("list")}
-      className={`flex items-center gap-2 transition-colors ${view === "list" ? "text-[#0b4b73]" : ""}`}
-      aria-pressed={view === "list"}
-    >
-      <span className="inline-flex h-4 w-4 flex-col justify-between">
-        <span className="block h-[2px] bg-current" />
-        <span className="block h-[2px] bg-current" />
-        <span className="block h-[2px] bg-current" />
-      </span>
-      LIST
-    </button>
-    <button
-      type="button"
-      onClick={() => setView("month")}
-      className={`flex items-center gap-2 transition-colors ${view === "month" ? "text-[#0b4b73]" : ""}`}
-      aria-pressed={view === "month"}
-    >
-      <span className="grid h-4 w-4 grid-cols-2 gap-[2px]">
-        <span className="block h-[5px] w-[5px] bg-current" />
-        <span className="block h-[5px] w-[5px] bg-current" />
-        <span className="block h-[5px] w-[5px] bg-current" />
-        <span className="block h-[5px] w-[5px] bg-current" />
-      </span>
-      MONTH
-    </button>
-  </div>
-</div>
+        </div>
 
         <div className="relative mt-6 border border-slate-200 border-l-0 border-t-0 border-b-0 p-6 sm:p-8">
           <div className="absolute inset-0 bg-[url('/images/world-map-dots.jpeg')] bg-no-repeat bg-center [background-size:115%_115%] opacity-80 pointer-events-none" />

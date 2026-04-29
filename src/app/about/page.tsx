@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function aboutPage() {
     return (
-        <main className="flex flex-col">
+        <main className="flex min-h-screen flex-col">
             <AboutHero />
             <MissionVision />
             <CompnayHistory />

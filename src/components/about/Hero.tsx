@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export const AboutHero = () => {
   return (
-    <section className="relative min-h-[60vh] bg-white overflow-hidden">
+    <section className="relative h-[60vh] overflow-hidden bg-white">
       <Image
         src="/images/webp/About_background.webp"
         alt="Ocean and mountains landscape with ship"
@@ -15,7 +15,7 @@ export const AboutHero = () => {
         className="object-cover"
       />
       <div className="absolute inset-0" />
-      <div className="relative mx-auto flex min-h-[60vh] w-[100%] flex-col items-start justify-center gap-6 mt-[3%] text-start">
+      <div className="relative mx-auto mt-[3%] flex h-[60vh] w-[100%] flex-col items-start justify-center gap-6 text-start">
         <div className={`transition-opacity duration-500 ease-in-out bg-[#094e8286] p-6 text-white w-full px-[10%] mt-[12vh]`}>
           <motion.h1
             initial={{ opacity: 0, y: 14 }}
