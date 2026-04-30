@@ -101,7 +101,11 @@ export default function NewsEventsPage() {
                       : Boolean(imageSrc);
                   const imageAlt = event.title;
                   return (
-                    <article key={event.id} className="text-center">
+                    <Link
+                      key={event.id}
+                      href={`/news-events/${event.id}`}
+                      className="block text-center"
+                    >
                       <div className="relative w-full aspect-[3/2] overflow-hidden">
                         {hasImage ? (
                           <Image
@@ -130,13 +134,10 @@ export default function NewsEventsPage() {
                           {event.subtitle}
                         </p>
                       )}
-                      <Link
-                        href={`/news-events/${event.id}`}
-                        className="inline-flex mt-2 text-xs font-semibold text-[#2b3f52]"
-                      >
+                      <span className="inline-flex mt-2 text-xs font-semibold text-[#2b3f52]">
                         Learn More
-                      </Link>
-                    </article>
+                      </span>
+                    </Link>
                   );
                 })}
               </div>
@@ -156,7 +157,11 @@ export default function NewsEventsPage() {
                             : Boolean(imageSrc);
                         const imageAlt = event.title;
                         return (
-                          <article key={event.id} className="text-center">
+                          <Link
+                            key={event.id}
+                            href={`/news-events/${event.id}`}
+                            className="block text-center"
+                          >
                             <div className="relative w-full aspect-[3/2] overflow-hidden">
                               {hasImage ? (
                                 <Image
@@ -185,13 +190,10 @@ export default function NewsEventsPage() {
                                 {event.subtitle}
                               </p>
                             )}
-                            <Link
-                              href={`/news-events/${event.id}`}
-                              className="inline-flex mt-2 text-xs font-semibold text-[#2b3f52]"
-                            >
+                            <span className="inline-flex mt-2 text-xs font-semibold text-[#2b3f52]">
                               Learn More
-                            </Link>
-                          </article>
+                            </span>
+                          </Link>
                         );
                       })}
                     </div>
@@ -206,3 +208,4 @@ export default function NewsEventsPage() {
     </main>
   );
 }
+

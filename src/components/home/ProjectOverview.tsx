@@ -3,15 +3,10 @@
 import { HomeProject } from "@/data/project";
 import { motion, AnimatePresence } from "framer-motion";
 import Image, { type StaticImageData } from "next/image";
-import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import {
-  getHomeSectionHref,
-  HOME_PROJECT_SECTION,
-  HOME_RETURN_QUERY_KEY,
-  HOME_SECTION_STORAGE_KEY,
-} from "@/utils/homeSections";
+import ProjectDetailModal from "../projects/ProjectDetailModal";
+import { type ProjectDetailData } from "../projects/ProjectDetailView";
 
 type Project = {
   id: string | number;
@@ -87,6 +82,9 @@ export const HomeProjectOverview = () => {
 
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [selectedProject, setSelectedProject] = useState<ProjectDetailData | null>(
+    null
+  );
 
   const availableYearsAsc = useMemo(() => {
     const set = new Set<number>();
@@ -187,12 +185,6 @@ export const HomeProjectOverview = () => {
     didInitialScroll.current = true;
     scrollToYear(String(activeYear));
   }, [activeYear, scrollToYear]);
-
-  const returnTo = getHomeSectionHref(HOME_PROJECT_SECTION);
-
-  const handleProjectClick = () => {
-    window.sessionStorage.setItem(HOME_SECTION_STORAGE_KEY, HOME_PROJECT_SECTION);
-  };
 
   return (
     <section id="project-overview" className="min-h-screen flex flex-col justify-center relative">
@@ -315,14 +307,23 @@ export const HomeProjectOverview = () => {
               data-year={project.__year != null ? String(project.__year) : ""}
               className="shrink-0 w-[50%] sm:w-[50%] md:w-[30%] lg:w-[20%] min-w-[50%] sm:min-w-[50%] md:min-w-[30%] lg:min-w-[20%]"
             >
-              <Link
-                href={{
-                  pathname: `/projects/${project.id}`,
-                  query: {
-                    [HOME_RETURN_QUERY_KEY]: returnTo,
-                  },
-                }}
-                onClick={handleProjectClick}
+              <button
+                type="button"
+                onClick={() =>
+                  setSelectedProject({
+                    id: project.id,
+                    name: project.name,
+                    image: project.image || "/placeholder.svg",
+                    description: project.description,
+                    client: project.client,
+                    cargo: project.cargo,
+                    pol: project.pol,
+                    pod: project.pod,
+                    duration: project.duration,
+                    vessel: project.vessel,
+                    projectDetails: project.projectDetails,
+                  })
+                }
                 className="w-full text-left"
                 aria-label={`Open project details for ${project.name}`}
               >
@@ -347,11 +348,15 @@ export const HomeProjectOverview = () => {
                   <span className="font-bold text-[#094d82]">{project.name}:</span>{" "}
                   <span className="font-normal">{project.description}</span>
                 </p>
-              </Link>
+              </button>
             </div>
           ))}
         </AnimatePresence>
       </div>
+      <ProjectDetailModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 };

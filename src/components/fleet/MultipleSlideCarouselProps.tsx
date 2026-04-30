@@ -12,11 +12,10 @@ import {
 import { Card, CardHeader } from "../ui/card";
 import Image, { StaticImageData } from "next/image";
 import { HomeProject } from "@/data/project";
-import Portal from "@/utils/portal";
-import ProjectDetailView, {
+import ProjectDetailModal from "../projects/ProjectDetailModal";
+import {
   type ProjectDetailData,
 } from "../projects/ProjectDetailView";
-import { FaXmark } from "react-icons/fa6";
 
 interface FleetProjectsInterface {
   projectName: string;
@@ -82,26 +81,6 @@ export default function MultipleSlideCarousel({
     },
     [fleetData.id, fleetData.name, projectsById]
   );
-
-  React.useEffect(() => {
-    if (!selectedProject) return;
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setSelectedProject(null);
-      }
-    };
-
-    window.addEventListener("keydown", handleEscape);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", handleEscape);
-    };
-  }, [selectedProject]);
 
   React.useEffect(() => {
     if (!api) return;
@@ -211,24 +190,10 @@ export default function MultipleSlideCarousel({
         </Carousel>
       </div>
 
-      {selectedProject && (
-        <Portal>
-          <div className="fixed inset-0 z-[1000] overflow-y-auto bg-white">
-            <button
-              type="button"
-              onClick={() => setSelectedProject(null)}
-              className="fixed right-4 top-4 z-[1010] rounded-full bg-white/90 p-3 text-[#094d82] shadow-lg transition hover:bg-white md:right-6 md:top-6"
-              aria-label="Close project details"
-            >
-              <FaXmark className="h-7 w-7" />
-            </button>
-
-            <div className="min-h-screen bg-white">
-              <ProjectDetailView project={selectedProject} />
-            </div>
-          </div>
-        </Portal>
-      )}
+      <ProjectDetailModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 }
