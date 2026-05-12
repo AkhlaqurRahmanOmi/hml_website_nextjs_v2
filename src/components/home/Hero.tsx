@@ -26,7 +26,7 @@ export const HomeHero = () => {
         {/* Full-bleed background video (no side bars) */}
         <AnimatePresence>
           <HeroVideoWithFallback
-            mp4Url="https://res.cloudinary.com/dl28pqkb2/video/upload/v1768561030/Landing_Video_Ver_6._3_tnmbaw.mp4"
+            mp4Url="https://res.cloudinary.com/druseaf0p/video/upload/v1778574576/Landing_Video_Ver_6._3_qwbqdf.mp4"
             webmUrl="https://res.cloudinary.com/dl28pqkb2/video/upload/v1768561030/Landing_Video_Ver_6._3_tnmbaw.mp4"
             posterImage="https://res.cloudinary.com/dl28pqkb2/image/upload/v1760583437/Sequence_0103_p2ryme.jpg"
             className="-z-10"
